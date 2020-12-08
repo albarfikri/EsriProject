@@ -358,9 +358,6 @@
               <a href="#" class="btn btn-sm btn-neutral">Filters</a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
   @yield('content')
 
   <!-- Footer -->

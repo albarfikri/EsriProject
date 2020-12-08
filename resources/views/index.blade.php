@@ -1,8 +1,8 @@
-@extends('layout.main')
+@extends('layout.dashboard')
 
 @section('title', 'Admin Drainase')
 
-@section('head_title', 'Dashboards')
+@section('head_title', 'Dashboard')
 
 @section('content')
           <!-- Card stats -->

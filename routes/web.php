@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,9 @@ use App\Http\Controllers\HomeController;
 //     return "Hallo";
 // });
 
-Route::get('/', [HomeController::class, "index"]);
+Route::get('/', [ViewController::class, "index"]);
+Route::get('/petugas', [ViewController::class, "petugas"]);
+Route::get('/drainase', [ViewController::class, "drainase"]);
+Route::get('/tersumbat', [ViewController::class, "tersumbat"]);
+Route::get('/banjir', [ViewController::class, "banjir"]);
+Route::get('/laporan', [ViewController::class, "laporan"]);
