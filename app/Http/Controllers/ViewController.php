@@ -23,7 +23,7 @@ class ViewController extends Controller
 
     public function banjir()
     {
-        return view('petugas');
+        return view('banjir');
     }
 
     public function tersumbat()
