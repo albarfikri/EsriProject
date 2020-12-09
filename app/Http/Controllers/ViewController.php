@@ -28,7 +28,7 @@ class ViewController extends Controller
 
     public function tersumbat()
     {
-        return view('petugas');
+        return view('tersumbat');
     }
 
     public function laporan()
