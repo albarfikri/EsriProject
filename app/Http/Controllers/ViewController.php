@@ -8,7 +8,7 @@ class ViewController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('/layout/login');
     }   
     
     public function petugas()
