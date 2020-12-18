@@ -13,9 +13,9 @@
             <!-- Card header -->
             <div class="card-header border-0">
               <h3 class="mb-0">Light table</h3>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Tambah Data
-</button>
+              <Button class="btn btn-primary mt-3" data-toggle="modal" data-target="#modal-default">Tambah data</Button>
+            
+              </button>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
@@ -172,7 +172,7 @@
         <div class="modal-content">
         	
             <div class="modal-header">
-                <h6 class="modal-title" id="modal-title-default">Tambah Data Petugas</h6>
+                <h6 class="modal-title" id="modal-title-default">Tambah Data Drainase</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -188,38 +188,18 @@
                           <div class="input-group-prepend">
                               <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                           </div>
-                          <input class="form-control" placeholder="Nama Petugas" type="text">
+                          <input class="form-control" placeholder="Nama Drainase" type="text">
                       </div>
                   </div>
                 </div>
-                <div class="col-md-12">
-                  <div class="form-group mb-3">
-                      <div class="input-group input-group-merge input-group-alternative">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                          </div>
-                          <input class="form-control" placeholder="Email" type="email">
-                      </div>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Kata Sandi" type="password">
-                    </div>
-                  </div>
-                  
-              </div>
+                
               <div class="col-md-6">
                   <div class="form-group mb-3">
                       <div class="input-group input-group-merge input-group-alternative">
                           <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="ni ni-trophy"></i></span>
+                              <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                           </div>
-                          <input class="form-control" placeholder="Posisi" type="text">
+                          <input class="form-control" placeholder="Ukuran" type="text">
                       </div>
                   </div>
                 </div>
@@ -227,30 +207,23 @@
                   <div class="form-group">
                     <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                            <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="No Hp" type="text">
+                        <input class="form-control" placeholder="Tipe Drainase" type="text">
                     </div>
                   </div>
                   
               </div>
-              <div class="col-md-6">
-                  <div class="form-group mb-3">
-                      <div class="input-group input-group-merge input-group-alternative">
-                          <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="ni ni-map-big"></i></span>
-                          </div>
-                          <input class="form-control" placeholder="Tempat Lahir" type="text">
-                      </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
+              <div class="col-md-12">
                   <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Deskripsi</label>
                     <div class="input-group input-group-merge input-group-alternative">
+                      
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                            <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
                         </div>
-                        <input class="form-control" type="date" id="example-date-input">
+                        
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                   </div>
                   
