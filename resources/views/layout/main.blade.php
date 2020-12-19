@@ -41,7 +41,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <img src="assets/img/brand/drain it.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -93,7 +93,7 @@
             <li class="nav-item">
               <a class="nav-link active active-pro" href="examples/upgrade.html">
                 <i class="ni ni-send text-dark"></i>
-                <span class="nav-link-text">Upgrade to PRO</span>
+                <span class="nav-link-text">Politeknik Caltex Riau</span>
               </a>
             </li>
           </ul>

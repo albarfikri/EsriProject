@@ -1,22 +1,23 @@
 @extends('layout.main')
 
-@section('title', 'Admin Drainase')
+@section('title', 'Titik Banjir')
 
 @section('head_title', 'Titik Banjir')
 
 @section('content')
-       <!-- Page content -->
-       <div class="container-fluid mt--6">
-      <div class="row">
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
         <div class="col">
-          <div class="card">
-            <!-- Card header -->
-            <div class="card-header border-0">
-              <h3 class="mb-0">Tabel Titik Banjir</h3>
-            </div>
-            <!-- Light table -->
-            <div class="table-responsive">
-            <table class="table align-items-center table-flush">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Tabel Titik Banjir</h3>
+                    <Button class="btn btn-primary mt-3" data-toggle="modal" data-target="#modal-default">Tambah data</Button>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="name">Nama Jalan</th>
@@ -39,8 +40,8 @@
                                     </div>
                                 </th>
                                 <td class="budget">
-                                101.44619960000006,
-          0.5317130000000247
+                                    101.44619960000006,
+                                    0.5317130000000247
                                 </td>
                                 <td>
                                     <span class="badge badge-dot mr-4">
@@ -64,7 +65,7 @@
                                         </a>
                                     </div>
                                 </td>
-                                
+
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,12 +77,90 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>                      
-   
+                            </tr>
+
                         </tbody>
                     </table>
+                </div>
             </div>
+        </div>
+    </div>
+    @endsection
+
+    <div class="row">
+    <div class="col-md-4">
+      <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+        <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h6 class="modal-title" id="modal-title-default">Tambah Data Titik Banjir</h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+
+              <form role="form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-map-big"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Nama Jalan" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Geometry" type="text">
+                      </div>
+                    </div>
+                  </div>
+                   <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-world"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Kondisi Kerukan" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary my-4">Kirim</button>
+                    </div>
+                  </div>
+
+
+              </form>
+
+            </div>
+
           </div>
         </div>
       </div>
-@endsection
+
+    </div>
+
+  </div>
+
+</div>

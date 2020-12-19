@@ -13,6 +13,7 @@
             <!-- Card header -->
             <div class="card-header border-0">
               <h3 class="mb-0">Tabel Titik Tersumbat</h3>
+              <Button class="btn btn-primary mt-3" data-toggle="modal" data-target="#modal-default">Tambah data</Button>       
             </div>
             <!-- Light table -->
             <div class="table-responsive">
@@ -77,5 +78,72 @@
           </div>
         </div>
       </div>
-
 @endsection
+<div class="row">
+    <div class="col-md-4">
+      <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+        <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h6 class="modal-title" id="modal-title-default">Tambah Data Titik Tersumbat</h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+
+              <form role="form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-map-big"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Nama Jalan" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Geometry" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary my-4">Kirim</button>
+                    </div>
+                  </div>
+
+
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
