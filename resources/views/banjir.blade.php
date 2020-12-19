@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Admin Drainase')
+@section('title', 'Titik Banjir')
 
 @section('head_title', 'Titik Banjir')
 

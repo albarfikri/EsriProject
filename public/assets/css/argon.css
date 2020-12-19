@@ -8873,7 +8873,7 @@ button.bg-dark:focus
 
 .bg-default
 {
-    background-color:#696969ad !important;
+    background-color: #172b4d !important;
 }
 
 a.bg-default:hover,
@@ -21596,7 +21596,7 @@ textarea[resize='horizontal']
     padding-left: 1rem;
 
     border-radius: .375rem; 
-    background: #FFD200;
+    background: #f6f9fc;
 }
 .navbar-vertical.navbar-expand-xs .lavalamp-object
 {
@@ -24151,9 +24151,9 @@ button.bg-lighter:focus
     background-color: #cbd3da !important;
 }
 
-.tampilan
+.bg-gradient-primary
 {
-    background: linear-gradient(87deg, #FFD200 0, #FFD600 100%) !important;
+    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
 }
 
 .bg-gradient-secondary

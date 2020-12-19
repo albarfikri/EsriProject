@@ -12,8 +12,7 @@
           <div class="card">
             <!-- Card header -->
             <div class="card-header border-0">
-              <h3 class="mb-0">Light table</h3>
-              <Button class="btn-sm btn-primary mt-3">Tambah data</Button>
+              <h3 class="mb-0">Tabel Petugas</h3>
             </div>
             <!-- Light table -->
             <div class="table-responsive">
