@@ -145,6 +145,19 @@
                     </div>
                   </div>
                   <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Deskripsi</label>
+                      <div class="input-group input-group-merge input-group-alternative">
+
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
+                        </div>
+
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
                     <div class="text-center">
                       <button type="button" class="btn btn-primary my-4">Kirim</button>
                     </div>

@@ -261,7 +261,16 @@
                         <input class="form-control" placeholder="Kata Sandi" type="password">
                       </div>
                     </div>
-
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group mb-3">

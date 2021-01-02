@@ -63,19 +63,19 @@
             </li>
             <li class="nav-item">
               <a class="nav-link {!! 'drainase' == request()->path() ? 'active' : '' !!}" href="/drainase">
-                <i class="ni ni-square-pin text-primary"></i>
+                <i class="ni ni-map-big text-primary"></i>
                 <span class="nav-link-text">Jaringan Drainase</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link {!! 'tersumbat' == request()->path() ? 'active' : '' !!}" href="/tersumbat">
-                <i class="ni ni-pin-3 text-yellow"></i>
+                <i class="ni ni-pin-3 text-orange"></i>
                 <span class="nav-link-text">Titik Tersumbat</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link {!! 'banjir' == request()->path() ? 'active' : '' !!}" href="/banjir">
-                <i class="ni ni-folder-17 text-default"></i>
+                <i class="ni ni-square-pin text-primary"></i>
                 <span class="nav-link-text">Titik Banjir</span>
               </a>
             </li>
