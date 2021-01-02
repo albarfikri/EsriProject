@@ -162,9 +162,8 @@
       </div>
     </div>
   </div>
-  @endsection
 
-
+  <!-- form modal input data dibawah -->
   <div class="row">
     <div class="col-md-4">
       <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
@@ -244,3 +243,4 @@
     </div>
   </div>
 </div>
+@endsection
