@@ -212,9 +212,7 @@
     </div>
   </div>
 
-  @endsection
-
-
+  <!-- form modal input data dibawah -->
   <div class="row">
     <div class="col-md-4">
       <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
@@ -261,7 +259,16 @@
                         <input class="form-control" placeholder="Kata Sandi" type="password">
                       </div>
                     </div>
-
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group mb-3">
@@ -310,18 +317,12 @@
                       <button type="button" class="btn btn-primary my-4">Kirim</button>
                     </div>
                   </div>
-
-
               </form>
-
             </div>
-
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
-
-</div>
+  </div>
+  @endsection

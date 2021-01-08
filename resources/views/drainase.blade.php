@@ -162,9 +162,8 @@
       </div>
     </div>
   </div>
-  @endsection
 
-
+  <!-- form modal input data dibawah -->
   <div class="row">
     <div class="col-md-4">
       <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
@@ -226,7 +225,6 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
                     </div>
-
                   </div>
                   <div class="col-md-12">
                     <div class="text-center">
@@ -245,3 +243,4 @@
     </div>
   </div>
 </div>
+@endsection
