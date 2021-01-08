@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 
@@ -19,6 +20,7 @@ use App\Http\Controllers\ViewController;
 // });
 
 Route::get('/', [ViewController::class, "index"]);
+Route::post('/auth', [AuthController::class, "login"]);
 Route::get('/petugas', [ViewController::class, "petugas"]);
 Route::get('/drainase', [ViewController::class, "drainase"]);
 Route::get('/tersumbat', [ViewController::class, "tersumbat"]);
