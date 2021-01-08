@@ -7,30 +7,34 @@ use Illuminate\Support\Facades\Http;
 
 class PetugasController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
+        $token = $request->session()->get('token', 'default');
         $data = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGE5M2VjZjZmNzZhNmRjNTc1OGZiYmNjNTZhMDc5NDliMjllMjVlNzNlNjVmMzU1MTZkNWI1MTMwZWNhMGU1OGM2OGY2MGYzYTUwMTE2ODQiLCJpYXQiOjE2MTAxMTQ5NTksIm5iZiI6MTYxMDExNDk1OSwiZXhwIjoxNjQxNjUwOTU5LCJzdWIiOiIyNzk0MDYwYS1kMzY3LTQzMTktOGE0NS03NTdiZmU2OTIxMGIiLCJzY29wZXMiOltdfQ.Ibzz_MkQyE_vU__WWqL5Jd0hz85Gd8YW38A3B3imQRLvfccgz6Suv6yMdPU_Yh51B9HwoP3eUXXf5XxkcG7sjJKDjegsiXmll3eGm8dVpQBjnPBr2940rCYcsmDWi4byG2tK71TKFRcY8T7LbZPyGdR-SdYBpn6amee8J5tAXic5EXP5bZlrVSUv4MG29jZ4Sl1KzleaQU7a3xy-va9sLnIOO5H3oR22CRv2qQ-j7USdLVoJY9Vq-KJ9KP-GPhepZjPmMFiBuowWxwLD48ZqcnxS1AaqNVwIFwM1abEvWI7BFruwv-UM8vpjdCRi11OBcSdSWxFzNrISKcIvWnb1WfD2mOJPrGNxnCxPqwQwnTUymDr_LynJIVpNUSp_Ji6F2OqbcJ-vp4Em1KDEiJl-CFB70GjzVcRUcrGnM1FqCWDeBwRFk9MyEDCaILjw0bTr3vm8b2pItUQcEwn_14a1ZL2qkuAaEhKDiboAUmgUujQsf6MrA87I_kC_gcgD3tgWoBK0Er1i1WwQv_z5RzWsFITlqTszlrq9zmVmx3z-0TDfpBVswvrQESm10PhhBvvfFRfBM8ZgbPb2XW-j11iH8YDmUpCGxXIGGufjhUFTlgV_TsVgJtve7iH6WYjXl9PATIC_h1ykDRVrEUaE7UaVkRdw9GX35CC0d59grT3627I',
-        ])->get('http://gis-drainase.pocari.id/api/petugas');
-        return view('petugas', ['data' => $data]);
+            'Authorization' => "Bearer $token"
+            ])->get('http://gis-drainase.pocari.id/api/petugas');
+        return view('petugas', ['data' => $data->json()]);
     }
 
-    public function addPetugas() {
+    public function addPetugas(Request $request) {
+        $token = $request->session()->get('token', 'default');
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGE5M2VjZjZmNzZhNmRjNTc1OGZiYmNjNTZhMDc5NDliMjllMjVlNzNlNjVmMzU1MTZkNWI1MTMwZWNhMGU1OGM2OGY2MGYzYTUwMTE2ODQiLCJpYXQiOjE2MTAxMTQ5NTksIm5iZiI6MTYxMDExNDk1OSwiZXhwIjoxNjQxNjUwOTU5LCJzdWIiOiIyNzk0MDYwYS1kMzY3LTQzMTktOGE0NS03NTdiZmU2OTIxMGIiLCJzY29wZXMiOltdfQ.Ibzz_MkQyE_vU__WWqL5Jd0hz85Gd8YW38A3B3imQRLvfccgz6Suv6yMdPU_Yh51B9HwoP3eUXXf5XxkcG7sjJKDjegsiXmll3eGm8dVpQBjnPBr2940rCYcsmDWi4byG2tK71TKFRcY8T7LbZPyGdR-SdYBpn6amee8J5tAXic5EXP5bZlrVSUv4MG29jZ4Sl1KzleaQU7a3xy-va9sLnIOO5H3oR22CRv2qQ-j7USdLVoJY9Vq-KJ9KP-GPhepZjPmMFiBuowWxwLD48ZqcnxS1AaqNVwIFwM1abEvWI7BFruwv-UM8vpjdCRi11OBcSdSWxFzNrISKcIvWnb1WfD2mOJPrGNxnCxPqwQwnTUymDr_LynJIVpNUSp_Ji6F2OqbcJ-vp4Em1KDEiJl-CFB70GjzVcRUcrGnM1FqCWDeBwRFk9MyEDCaILjw0bTr3vm8b2pItUQcEwn_14a1ZL2qkuAaEhKDiboAUmgUujQsf6MrA87I_kC_gcgD3tgWoBK0Er1i1WwQv_z5RzWsFITlqTszlrq9zmVmx3z-0TDfpBVswvrQESm10PhhBvvfFRfBM8ZgbPb2XW-j11iH8YDmUpCGxXIGGufjhUFTlgV_TsVgJtve7iH6WYjXl9PATIC_h1ykDRVrEUaE7UaVkRdw9GX35CC0d59grT3627I',
-        ])->post('http://gis-drainase.pocari.id/api/register/petugas', [
-            'email' => 'petugas3@gmail.com',
-            'password' => '123',
-            'password_confirmation' => '123',
-            'nama' => 'udin',
-            'no_hp' => '08120302323',
-            'posisi_petugas' => 'Supervisor',
-            'tempat_lahir' => 'Pekanbaru',
-            'tgl_lahir' => '2000-04-21',
-            'alamat' => 'Umban Sari'
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token"
+            ])->post('http://gis-drainase.pocari.id/api/register/petugas', [
+            'email' => $request->post('email'),
+            'password' => $request->post('password'),
+            'password_confirmation' => $request->post('password2'),
+            'nama' => $request->post('nama'),
+            'foto' => $_FILES['foto']['name'],
+            'no_hp' => $request->post('no_hp'),
+            'posisi_petugas' => $request->post('posisi_petugas'),
+            'tempat_lahir' => $request->post('tempat_lahir'),
+            'tgl_lahir' => $request->post('tgl_lahir'),
+            'alamat' => $request->post('alamat')
         ]);
-
-        dd($response);
+        
+        // dd($response->json());
+        return redirect('/petugas');
     }
 }

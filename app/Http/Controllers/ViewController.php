@@ -8,7 +8,7 @@ class ViewController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('/layout/login');
     }   
     
     public function petugas()
@@ -18,17 +18,17 @@ class ViewController extends Controller
 
     public function drainase()
     {
-        return view('petugas');
+        return view('drainase');
     }
 
     public function banjir()
     {
-        return view('petugas');
+        return view('banjir');
     }
 
     public function tersumbat()
     {
-        return view('petugas');
+        return view('tersumbat');
     }
 
     public function laporan()
