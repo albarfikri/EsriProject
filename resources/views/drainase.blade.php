@@ -22,26 +22,54 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Nama Drainase</th>
+                <th scope="col">Nama Jalan</th>
                 <th scope="col">Ukuran</th>
-                <th scope="col">Deskripsi</th>
                 <th scope="col">Tipe</th>
+                <th scope="col">Geometry</th>
+                <th scope="col">Kedalaman</th>
+                <th scope="col">Bahan</th>
+                <th scope="col">Kondisi</th>
+                <th scope="col">Akhir Pembuangan</th>
+                <th scope="col">Arah Alir</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody class="list">
+              @foreach($data as $item)
               <tr>
                 <th scope="row">
-                  <span class="name mb-0 text-sm">Drainase 1
+                  <div class="media align-items-center">
+                    <div class="media-body">
+                      <span class="name mb-0 text-sm">{{$item['nama_jalan']}}</span>
+                    </div>
+                  </div>
                 </th>
                 <td class="budget">
-                  10 Meter
+                  <span class="badge badge-dot mr-4">
+                    <i class="bg-warning"></i>
+                    <span class="status">{{$item['lebar']}} x {{$item['panjang']}}</span>
+                  </span>
                 </td>
                 <td>
-                  Ini Deskripsi
+                {{$item['tipe_drainase']}}
+                <td>
+                <td>
+                {{$item['geometry']}}
+                <td>
+                <td>
+                {{$item['panjang']}}
                 </td>
                 <td>
-                  Tipe 1
+                {{$item['bahan']}
+                </td>
+                <td>
+                {{$item['kondisi']}
+                </td>
+                <td>
+                {{$item['akhir_pembuangan']}
+                </td>
+                <td>
+                {{$item['arah_alir']}
                 </td>
                 <td class="text-right">
                   <div class="dropdown">
@@ -55,81 +83,7 @@
                   </div>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">
-                  <span class="name mb-0 text-sm">Drainase 2
-                </th>
-                <td class="budget">
-                  20 Meter
-                </td>
-                <td>
-                  Ini Deskripsi
-                </td>
-                <td>
-                  Tipe 2
-                </td>
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Hapus</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <span class="name mb-0 text-sm">Drainase 3
-                </th>
-                <td class="budget">
-                  30 Meter
-                </td>
-                <td>
-                  Ini Deskripsi
-                </td>
-                <td>
-                  Tipe 3
-                </td>
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Hapus</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <span class="name mb-0 text-sm">Drainase 4
-                </th>
-                <td class="budget">
-                  40 Meter
-                </td>
-                <td>
-                  Ini Deskripsi
-                </td>
-                <td>
-                  Tipe 4
-                </td>
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Hapus</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -187,7 +141,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Drainase" type="text">
+                        <input class="form-control" placeholder="Nama Jalan" type="text">
                       </div>
                     </div>
                   </div>
@@ -198,7 +152,81 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Ukuran" type="text">
+                        <input class="form-control" placeholder="Lebar" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Panjang" type="text">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Kedalaman" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Bahan" type="text">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Akhir Pembuangan" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Arah Alir" type="text">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Geometery" type="text">
                       </div>
                     </div>
                   </div>
@@ -215,7 +243,7 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label for="exampleFormControlTextarea1">Deskripsi</label>
+                      <label for="exampleFormControlTextarea1">Kondisi</label>
                       <div class="input-group input-group-merge input-group-alternative">
 
                         <div class="input-group-prepend">

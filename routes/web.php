@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DrainaseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 
@@ -19,10 +20,14 @@ use App\Http\Controllers\ViewController;
 //     return "Hallo";
 // });
 
+Route::prefix('drainase')->group(function () {
+    $controller = DrainaseController::class;
+    Route::get('/', [$controller, 'index']);
+    Route::post('/addDrainase', [$controller, 'addDrainase']);
+});
+
 Route::get('/', [ViewController::class, "index"]);
 Route::post('/auth', [AuthController::class, "login"]);
-Route::get('/petugas', [ViewController::class, "petugas"]);
-Route::get('/drainase', [ViewController::class, "drainase"]);
 Route::get('/tersumbat', [ViewController::class, "tersumbat"]);
 Route::get('/banjir', [ViewController::class, "banjir"]);
 Route::get('/laporan', [ViewController::class, "laporan"]);
