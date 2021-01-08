@@ -25,7 +25,9 @@ class AuthController extends Controller
 
         if($data['status_code'] == 200) {
             $token = $data['access_token'];
+            $id_admin = $data['user']['id'];
             $request->session()->put('token', $token);
+            $request->session()->put('id_admin', $id_admin);
             return redirect('/petugas');
         } else {
             return redirect('/');
