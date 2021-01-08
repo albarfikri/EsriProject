@@ -7,30 +7,25 @@ use Illuminate\Support\Facades\Http;
 
 class DrainaseController extends Controller
 {
-    private $token;
-    private $id_admin;
-
-    public function __construct(Request $request)
+    public function index(Request $request)
     {
-        $this->token = $request->session()->get('token', 'default');
-        $this->id_admin = $request->session()->get('id_admin', 'default');
-    }
-    public function index()
-    {
+        $token = $request->session()->get('token', 'default');
         $data = Http::withHeaders([
-            'Authorization' => "Bearer $this->token"
+            'Authorization' => "Bearer $token"
             ])->get('http://gis-drainase.pocari.id/api/drainase');
         return view('drainase', ['data' => $data->json()]);
     }
 
     public function addDrainase(Request $request) {
+        $token = $request->session()->get('token', 'default');
+        $id_admin = $request->session()->get('id_admin', 'default');
         $geo = $request->post('geometry');
         $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
         $response = Http::withHeaders([
             'accept' => 'application/json',
-            'Authorization' => "Bearer $this->token"
-            ])->post('http://gis-drainase.pocari.id/api/register/petugas', [
-            'id_admin' => $this->id_admin,
+            'Authorization' => "Bearer $token"
+            ])->post('http://gis-drainase.pocari.id/api/drainase', [
+            'id_admin' => $id_admin,
             'nama_jalan' => $request->post('nama_jalan'),
             'lebar' => $request->post('lebar'),
             'panjang' => $request->post('panjang'),
@@ -44,7 +39,7 @@ class DrainaseController extends Controller
             'geometry' => $point,
         ]);
         
-        dd($response->json());
-        // return redirect('/petugas');
+        // dd($response->json());
+        return redirect('/drainase');
     }
 }

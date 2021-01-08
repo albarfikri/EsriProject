@@ -52,24 +52,24 @@
                 </td>
                 <td>
                 {{$item['tipe_drainase']}}
-                <td>
+                </td>
                 <td>
                 {{$item['geometry']}}
-                <td>
-                <td>
-                {{$item['panjang']}}
                 </td>
                 <td>
-                {{$item['bahan']}
+                {{$item['kedalaman']}}
                 </td>
                 <td>
-                {{$item['kondisi']}
+                {{$item['bahan']}}
                 </td>
                 <td>
-                {{$item['akhir_pembuangan']}
+                {{$item['kondisi']}}
                 </td>
                 <td>
-                {{$item['arah_alir']}
+                {{$item['akhir_pembuangan']}}
+                </td>
+                <td>
+                {{$item['arah_alir']}}
                 </td>
                 <td class="text-right">
                   <div class="dropdown">
@@ -133,7 +133,8 @@
 
             <div class="modal-body">
 
-              <form role="form">
+              <form action="/drainase/addDrainase" method="post" enctype="multipart/form-data" role="form">
+                @csrf
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group mb-3">
@@ -141,7 +142,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Jalan" type="text">
+                        <input class="form-control" placeholder="Nama Jalan" name="nama_jalan" type="text">
                       </div>
                     </div>
                   </div>
@@ -152,7 +153,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Lebar" type="text">
+                        <input class="form-control" placeholder="Lebar" name="lebar" type="text">
                       </div>
                     </div>
                   </div>
@@ -162,7 +163,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Panjang" type="text">
+                        <input class="form-control" placeholder="Panjang" name="panjang" type="text">
                       </div>
                     </div>
 
@@ -173,7 +174,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Kedalaman" type="text">
+                        <input class="form-control" placeholder="Kedalaman" name="kedalaman" type="text">
                       </div>
                     </div>
                   </div>
@@ -183,7 +184,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Bahan" type="text">
+                        <input class="form-control" placeholder="Bahan" name="bahan" type="text">
                       </div>
                     </div>
 
@@ -194,7 +195,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-image"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple>
+                        <input class="form-control" placeholder="Foto Titik Banjir" name="foto" type="file" multiple>
                       </div>
                     </div>
                   </div>
@@ -205,7 +206,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Akhir Pembuangan" type="text">
+                        <input class="form-control" placeholder="Akhir Pembuangan" name="akhir_pembuangan" type="text">
                       </div>
                     </div>
                   </div>
@@ -215,7 +216,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Arah Alir" type="text">
+                        <input class="form-control" placeholder="Arah Alir" name="arah_alir" type="text">
                       </div>
                     </div>
 
@@ -226,7 +227,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Geometery" type="text">
+                        <input class="form-control" placeholder="Geometery" name="geometry" type="text">
                       </div>
                     </div>
                   </div>
@@ -236,7 +237,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Tipe Drainase" type="text">
+                        <input class="form-control" placeholder="Tipe Drainase" name="tipe_drainase" type="text">
                       </div>
                     </div>
 
@@ -250,13 +251,13 @@
                           <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
                         </div>
 
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="kondisi" rows="3"></textarea>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="text-center">
-                      <button type="button" class="btn btn-primary my-4">Kirim</button>
+                      <button type="submit" class="btn btn-primary my-4">Kirim</button>
                     </div>
                   </div>
 
