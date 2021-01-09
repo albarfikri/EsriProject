@@ -27,6 +27,7 @@
               </tr>
             </thead>
             <tbody class="list">
+              @foreach($data as $item)
               <tr>
                 <th scope="row">
                   <div class="media align-items-center">
@@ -34,28 +35,19 @@
                                             <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
                                         </a> -->
                     <div class="media-body">
-                      <span class="name mb-0 text-sm">Jl. Ronggo Warsito No.11</span>
+                      <span class="name mb-0 text-sm">{{$item['nama_jalan']}}</span>
                     </div>
                   </div>
                 </th>
                 <td class="budget">
-                  101.44619960000006,
-                  0.5317130000000247
+                  {{$item['geometry']}}
                 </td>
                 <td>
                   <div class="avatar-group">
                     <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                      <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
+                      <img alt="Image placeholder" src="{{$item['foto']}}">
                     </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                      <img alt="Image placeholder" src="../assets/img/theme/team-2.jpg">
-                    </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                      <img alt="Image placeholder" src="../assets/img/theme/team-3.jpg">
-                    </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                      <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
-                    </a>
+
                   </div>
                 </td>
 
@@ -71,7 +63,7 @@
                   </div>
                 </td>
               </tr>
-
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -95,7 +87,8 @@
 
             <div class="modal-body">
 
-              <form role="form">
+              <form action="/tersumbat/addTersumbat" method="post" enctype="multipart/form-data" role="form">
+                @csrf
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group mb-3">
@@ -103,7 +96,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Jalan" type="text">
+                        <input class="form-control" placeholder="Nama Jalan" type="text" name="nama_jalan">
                       </div>
                     </div>
                   </div>
@@ -113,7 +106,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Geometry" type="text">
+                        <input class="form-control" placeholder="Geometry" type="text" name="geometry"> 
                       </div>
                     </div>
                   </div>
@@ -123,7 +116,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-image"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple>
+                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" name="foto" multiple>
                       </div>
                     </div>
                   </div>
@@ -136,13 +129,13 @@
                           <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
                         </div>
 
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="keterangan" rows="3"></textarea>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="text-center">
-                      <button type="button" class="btn btn-primary my-4">Kirim</button>
+                      <button type="submit" class="btn btn-primary my-4">Kirim</button>
                     </div>
                   </div>
               </form>

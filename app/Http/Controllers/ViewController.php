@@ -18,7 +18,7 @@ class ViewController extends Controller
 
     public function drainase()
     {
-        return view('drainase');
+        return view('drainasee');
     }
 
     public function banjir()

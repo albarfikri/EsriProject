@@ -28,7 +28,7 @@ class AuthController extends Controller
             $id_admin = $data['user']['id'];
             $request->session()->put('token', $token);
             $request->session()->put('id_admin', $id_admin);
-            return redirect('/drainase');
+            return redirect('/petugas');
         } else {
             return redirect('/');
         }
