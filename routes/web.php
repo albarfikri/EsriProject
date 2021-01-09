@@ -30,6 +30,7 @@ Route::prefix('petugas')->group(function () {
     $controller = PetugasController::class;
     Route::get('/', [$controller, 'index']);
     Route::post('/addPetugas', [$controller, 'addPetugas']);
+    Route::get('/deletePetugas/{id}', [$controller, 'deletePetugas']);
 });
 
 Route::prefix('drainase')->group(function () {

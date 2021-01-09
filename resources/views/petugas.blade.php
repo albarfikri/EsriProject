@@ -61,7 +61,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Hapus</a>
+                      <a class="dropdown-item" href="/petugas/deletePetugas/{{$item['id']}}">Hapus</a>
                     </div>
                   </div>
                 </td>

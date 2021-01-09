@@ -37,4 +37,14 @@ class PetugasController extends Controller
         // dd($response->json());
         return redirect('/petugas');
     }
+
+    public function deletePetugas(Request $request, $id_petugas)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+            ])->delete('http://gis-drainase.pocari.id/api/petugas/' . $id_petugas);
+        
+        dd($data);
+    }
 }
