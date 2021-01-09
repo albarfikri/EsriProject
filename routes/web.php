@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DrainaseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 
@@ -24,6 +25,12 @@ Route::prefix('petugas')->group(function () {
     $controller = PetugasController::class;
     Route::get('/', [$controller, 'index']);
     Route::post('/addPetugas', [$controller, 'addPetugas']);
+});
+
+Route::prefix('drainase')->group(function () {
+    $controller = DrainaseController::class;
+    Route::get('/', [$controller, 'index']);
+    Route::post('/addDrainase', [$controller, 'addDrainase']);
 });
 
 Route::get('/', [ViewController::class, "index"]);
