@@ -31,30 +31,28 @@
               </tr>
             </thead>
             <tbody class="list">
+              @foreach($data as $item)
               <tr>
                 <th scope="row">
                   <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                    </a>
                     <div class="media-body">
-                      <span class="name mb-0 text-sm">John Mark</span>
+                      <span class="name mb-0 text-sm">{{$item['nama']}}</span>
                     </div>
                   </div>
                 </th>
                 <td class="budget">
                   <span class="badge badge-dot mr-4">
                     <i class="bg-warning"></i>
-                    <span class="status">Supervisor</span>
+                    <span class="status">{{$item['nama']}}</span>
                   </span>
                 </td>
                 <td>
-                  +6281247887512
+                {{$item['no_hp']}}
                 <td>
-                  john@rocketmail.com
+                {{$item['email']}}
                 </td>
                 <td>
-                  California, 02 January 1987
+                {{$item['tempat_lahir']}}, {{$item['tgl_lahir']}}
                 </td>
                 <td class="text-right">
                   <div class="dropdown">
@@ -68,117 +66,7 @@
                   </div>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="name mb-0 text-sm">Peter Newt</span>
-                    </div>
-                  </div>
-                </th>
-                <td class="budget">
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-primary"></i>
-                    <span class="status">Manager</span>
-                  </span>
-                </td>
-                <td>
-                  +6282398239283
-                <td>
-                  peter.newt@yahoo.com
-                </td>
-                <td>
-                  London, 14 April 1998
-                </td>
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Hapus</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="name mb-0 text-sm">Rebecca Alison</span>
-                    </div>
-                  </div>
-                </th>
-                <td class="budget">
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-primary"></i>
-                    <span class="status">Manager</span>
-                  </span>
-                </td>
-                <td>
-                  +6282392383434
-                <td>
-                  alison.rebecca@yahoo.com
-                </td>
-                <td>
-                  Texas, 27 August 1984
-                </td>
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Hapus</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="name mb-0 text-sm">Roger Johnson</span>
-                    </div>
-                  </div>
-                </th>
-                <td class="budget">
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i>
-                    <span class="status">Technician</span>
-                  </span>
-                </td>
-                <td>
-                  +6281234343434
-                <td>
-                  johnson.roger@gmail.com
-                </td>
-                <td>
-                  New York, 19 March 1989
-                </td>
-                <td class="text-right">
-                  <div class="dropdown">
-                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Hapus</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -228,7 +116,8 @@
 
             <div class="modal-body">
 
-              <form role="form">
+              <form action="/petugas/addPetugas" method="post" role="form" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group mb-3">
@@ -236,7 +125,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Petugas" type="text">
+                        <input class="form-control" placeholder="Nama Petugas" type="text" name="nama">
                       </div>
                     </div>
                   </div>
@@ -246,17 +135,37 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Email" type="email">
+                        <input class="form-control" placeholder="Email" type="email" name="email">
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-12">
+                  <div class="col-md-6">
                     <div class="form-group">
                       <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Kata Sandi" type="password">
+                        <input class="form-control" placeholder="Kata Sandi" type="password" name="password">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Konfirmasi Kata Sandi" type="password" name="password2">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group mb-3">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Alamat Petugas" type="text" name="alamat">
                       </div>
                     </div>
                   </div>
@@ -266,7 +175,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-image"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple>
+                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple name="foto">
                       </div>
                     </div>
                   </div>
@@ -276,7 +185,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Posisi" type="text">
+                        <input class="form-control" placeholder="Posisi" type="text" name="posisi_petugas">
                       </div>
                     </div>
                   </div>
@@ -286,7 +195,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                         </div>
-                        <input class="form-control" placeholder="No Hp" type="text">
+                        <input class="form-control" placeholder="No Hp" type="text" name="no_hp">
                       </div>
                     </div>
 
@@ -297,7 +206,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Tempat Lahir" type="text">
+                        <input class="form-control" placeholder="Tempat Lahir" type="text" name="tempat_lahir">
                       </div>
                     </div>
                   </div>
@@ -307,14 +216,14 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                         </div>
-                        <input class="form-control" type="date" id="example-date-input">
+                        <input class="form-control" type="date" id="example-date-input" name="tgl_lahir">
                       </div>
                     </div>
 
                   </div>
                   <div class="col-md-12">
                     <div class="text-center">
-                      <button type="button" class="btn btn-primary my-4">Kirim</button>
+                      <button type="submit" class="btn btn-primary my-4">Kirim</button>
                     </div>
                   </div>
               </form>
