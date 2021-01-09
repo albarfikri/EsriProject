@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DrainaseController;
+use App\Http\Controllers\TersumbatController;
+use App\Http\Controllers\BanjirController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 
@@ -20,15 +23,35 @@ use App\Http\Controllers\ViewController;
 //     return "Hallo";
 // });
 
+
+
+
 Route::prefix('petugas')->group(function () {
     $controller = PetugasController::class;
     Route::get('/', [$controller, 'index']);
     Route::post('/addPetugas', [$controller, 'addPetugas']);
 });
 
+Route::prefix('drainase')->group(function () {
+    $controller = DrainaseController::class;
+    Route::get('/', [$controller, 'index']);
+    Route::post('/addDrainase', [$controller, 'addDrainase']);
+});
+
+Route::prefix('tersumbat')->group(function () {
+    $controller = TersumbatController::class;
+    Route::get('/', [$controller, 'index']);
+    Route::post('/addTersumbat', [$controller, 'addTersumbat']);
+});
+
+Route::prefix('banjir')->group(function () {
+    $controller = BanjirController::class;
+    Route::get('/', [$controller, 'index']);
+    Route::post('/addBanjir', [$controller, 'addBanjir']);
+});
+
+
 Route::get('/', [ViewController::class, "index"]);
 Route::post('/auth', [AuthController::class, "login"]);
-Route::get('/drainase', [ViewController::class, "drainase"]);
-Route::get('/tersumbat', [ViewController::class, "tersumbat"]);
-Route::get('/banjir', [ViewController::class, "banjir"]);
+
 Route::get('/laporan', [ViewController::class, "laporan"]);
