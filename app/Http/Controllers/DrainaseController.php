@@ -16,6 +16,34 @@ class DrainaseController extends Controller
         return view('drainase', ['data' => $data->json()]);
     }
 
+    public function detail(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/drainase/' . $id);
+
+        $drainase = $data->json();
+        
+        // dd($drainase);
+
+        $point = [
+            "type" => "Feature",
+            "properties" => [
+                "name" => "Coors Field",
+                "amenity" => "Baseball Stadium",
+                "popupContent" => "This is where the Rockies play!"
+            ],
+            "geometry" => json_decode($drainase['geometry'], true),
+        ];
+
+        $point['view'] = $point['geometry']['coordinates'];
+
+        // dd($point['geometry']->{'coordinates'});
+
+        return view('detailDrainase', ['data' => json_encode($point), 'item' => $drainase]);
+    }
+
     public function addDrainase(Request $request)
     {
         $token = $request->session()->get('token', 'default');

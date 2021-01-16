@@ -29,13 +29,15 @@ use App\Http\Controllers\ViewController;
 Route::prefix('petugas')->group(function () {
     $controller = PetugasController::class;
     Route::get('/', [$controller, 'index']);
-    Route::post('/addPetugas', [$controller, 'addPetugas']);
-    Route::get('/deletePetugas/{id}', [$controller, 'deletePetugas']);
+    Route::get('/detail/{id}', [$controller, 'detail']);
+    Route::post('/create', [$controller, 'create']);
+    Route::get('/create/{id}', [$controller, 'create']);
 });
 
 Route::prefix('drainase')->group(function () {
     $controller = DrainaseController::class;
     Route::get('/', [$controller, 'index']);
+    Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/addDrainase', [$controller, 'addDrainase']);
 });
 

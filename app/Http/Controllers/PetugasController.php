@@ -13,10 +13,23 @@ class PetugasController extends Controller
         $data = Http::withHeaders([
             'Authorization' => "Bearer $token"
             ])->get('http://gis-drainase.pocari.id/api/petugas');
+
         return view('petugas', ['data' => $data->json()]);
     }
 
-    public function addPetugas(Request $request) {
+    public function detail(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+            ])->get('http://gis-drainase.pocari.id/api/petugas/' . $id);
+
+        // dd($data->json());
+
+        return view('detailPetugas', ['data' => $data->json()]);
+    }
+
+    public function create(Request $request) {
         $token = $request->session()->get('token', 'default');
         $response = Http::withHeaders([
             'accept' => 'application/json',
@@ -38,7 +51,7 @@ class PetugasController extends Controller
         return redirect('/petugas');
     }
 
-    public function deletePetugas(Request $request, $id_petugas)
+    public function delete(Request $request, $id_petugas)
     {
         $token = $request->session()->get('token', 'default');
         $data = Http::withHeaders([

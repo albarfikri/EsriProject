@@ -25,12 +25,7 @@
                 <th scope="col">Nama Jalan</th>
                 <th scope="col">Ukuran</th>
                 <th scope="col">Tipe</th>
-                <th scope="col">Geometry</th>
-                <th scope="col">Kedalaman</th>
-                <th scope="col">Bahan</th>
                 <th scope="col">Kondisi</th>
-                <th scope="col">Akhir Pembuangan</th>
-                <th scope="col">Arah Alir</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -53,30 +48,18 @@
                 <td>
                 {{$item['tipe_drainase']}}
                 </td>
-                <td>
-                {{$item['geometry']}}
-                </td>
-                <td>
-                {{$item['kedalaman']}}
-                </td>
-                <td>
-                {{$item['bahan']}}
-                </td>
+                
                 <td>
                 {{$item['kondisi']}}
                 </td>
-                <td>
-                {{$item['akhir_pembuangan']}}
-                </td>
-                <td>
-                {{$item['arah_alir']}}
-                </td>
+                
                 <td class="text-right">
                   <div class="dropdown">
                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                      <a class="dropdown-item" href="/drainase/detail/{{ $item['id'] }}">Detail</a>
                       <a class="dropdown-item" href="#">Edit</a>
                       <a class="dropdown-item" href="#">Hapus</a>
                     </div>
