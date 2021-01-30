@@ -57,8 +57,9 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#">Update</a>
+                      <a class="dropdown-item" href="/tersumbat/detail/{{ $item['id'] }}">Detail</a>
                       <a class="dropdown-item" href="#">Delete</a>
+                      <a class="dropdown-item" href="#">Edit</a>
                     </div>
                   </div>
                 </td>

@@ -53,13 +53,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/drainase">
+              <a class="nav-link">
                 <i class="ni ni-map-big text-primary"></i>
                 <span class="nav-link-text">Jaringan Drainase</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {!! 'tersumbat' == request()->path() ? 'active' : '' !!}" href="/tersumbat">
+              <a class="nav-link active" href="/tersumbat">
                 <i class="ni ni-pin-3 text-orange"></i>
                 <span class="nav-link-text">Titik Tersumbat</span>
               </a>
@@ -377,28 +377,8 @@
                         <td>{{ $item['nama_jalan'] }}</td>
                     </tr>
                     <tr>
-                        <td>ukuran</td>
-                        <td> {{ $item['panjang'] }} x {{ $item['lebar'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>kedalaman</td>
-                        <td>{{ $item['kedalaman'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>bahan</td>
-                        <td>{{ $item['bahan'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>kondisi</td>
-                        <td>{{ $item['kondisi'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>akhir pembuangan</td>
-                        <td>{{ $item['akhir_pembuangan'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>arah alir</td>
-                        <td>{{ $item['arah_alir'] }}</td>
+                        <td>Geometry</td>
+                        <td>{{ $item['geometry'] }}</td>
                     </tr>
                 </table>
             </div>

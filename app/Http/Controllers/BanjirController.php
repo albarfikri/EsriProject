@@ -16,6 +16,35 @@ class BanjirController extends Controller
         return view('banjir', ['data' => $data->json()]);
     }
 
+    public function detail(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/titik_banjir/' . $id);
+
+        $banjir = $data->json();
+        
+        // dd($drainase);
+
+        $point = [
+            "type" => "Feature",
+            "properties" => [
+                "name" => "Coors Field",
+                "amenity" => "Baseball Stadium",
+                "popupContent" => "This is where the Rockies play!"
+            ],
+            "geometry" => json_decode($banjir['geometry'], true),
+        ];
+
+        $point['view'] = $point['geometry']['coordinates'];
+
+        // dd($point['geometry']->{'coordinates'});
+
+        return view('detailBanjir', ['data' => json_encode($point), 'item' => $banjir]);
+    }
+
+
     public function addBanjir(Request $request)
     {
         $token = $request->session()->get('token', 'default');

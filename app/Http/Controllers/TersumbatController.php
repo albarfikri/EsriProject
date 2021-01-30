@@ -16,6 +16,34 @@ class TersumbatController extends Controller
         return view('tersumbat', ['data' => $data->json()]);
     }
 
+    public function detail(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $data = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get('http://gis-drainase.pocari.id/api/titik_tersumbat/' . $id);
+
+        $tersumbat = $data->json();
+        
+        // dd($drainase);
+
+        $point = [
+            "type" => "Feature",
+            "properties" => [
+                "name" => "Coors Field",
+                "amenity" => "Baseball Stadium",
+                "popupContent" => "This is where the Rockies play!"
+            ],
+            "geometry" => json_decode($tersumbat['geometry'], true),
+        ];
+
+        $point['view'] = $point['geometry']['coordinates'];
+
+        // dd($point['geometry']->{'coordinates'});
+
+        return view('detailTersumbat', ['data' => json_encode($point), 'item' => $tersumbat]);
+    }
+
     public function addTersumbat(Request $request)
     {
         $token = $request->session()->get('token', 'default');

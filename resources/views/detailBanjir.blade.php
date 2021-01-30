@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/drainase">
+              <a class="nav-link">
                 <i class="ni ni-map-big text-primary"></i>
                 <span class="nav-link-text">Jaringan Drainase</span>
               </a>
@@ -65,7 +65,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {!! 'banjir' == request()->path() ? 'active' : '' !!}" href="/banjir">
+              <a class="nav-link active" href="/banjir">
                 <i class="ni ni-square-pin text-primary"></i>
                 <span class="nav-link-text">Titik Banjir</span>
               </a>
@@ -377,28 +377,12 @@
                         <td>{{ $item['nama_jalan'] }}</td>
                     </tr>
                     <tr>
-                        <td>ukuran</td>
-                        <td> {{ $item['panjang'] }} x {{ $item['lebar'] }}</td>
+                        <td>Kondisi_kerusakan</td>
+                        <td> {{ $item['kondisi_kerusakan'] }}</td>
                     </tr>
                     <tr>
-                        <td>kedalaman</td>
-                        <td>{{ $item['kedalaman'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>bahan</td>
-                        <td>{{ $item['bahan'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>kondisi</td>
-                        <td>{{ $item['kondisi'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>akhir pembuangan</td>
-                        <td>{{ $item['akhir_pembuangan'] }}</td>
-                    </tr>
-                    <tr>
-                        <td>arah alir</td>
-                        <td>{{ $item['arah_alir'] }}</td>
+                        <td>Geometery</td>
+                        <td> {{ $item['geometry'] }}</td>
                     </tr>
                 </table>
             </div>
