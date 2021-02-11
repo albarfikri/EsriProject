@@ -624,7 +624,7 @@
                 tileLayer,
                 geostatic
             ]
-        }).setView([point.view[1], point.view[0]], 12);
+        }).setView([0.510440, 101.438309], 12);
     }
 
     const geojsonFeature = {
