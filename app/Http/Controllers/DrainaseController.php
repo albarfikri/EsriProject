@@ -37,9 +37,10 @@ class DrainaseController extends Controller
             "geometry" => json_decode($drainase['geometry'], true),
         ];
 
-        $point['view'] = $point['geometry']['coordinates'];
-
+        $point['view'] = $point['geometry']['coordinates'][0];
+        // dd(json_encode($point));
         // dd($point['geometry']->{'coordinates'});
+        // dd($point['view']);
 
         return view('detailDrainase', ['data' => json_encode($point), 'item' => $drainase]);
     }

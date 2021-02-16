@@ -4,10 +4,6 @@
 <head>
   <!-- Favicon -->
   <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
-  {{-- leaflet --}}
-  <link rel="stylesheet" href="{{ asset('assets/leaflet/leaflet.css') }}" />
-  <script src="{{ asset('assets/leaflet/leaflet.js') }}"></script>
-  <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
   <link rel="stylesheet" href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
@@ -16,12 +12,16 @@
   <!-- Argon CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.2.0') }}" type="text/css">
 
-  <style>
-        #map {
-            height: 600px;
-            width: 100%;
-        }
-  </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+  @yield('styles')
 
   <title>@yield('title')</title>
 </head>
@@ -352,6 +352,7 @@
         </div>
       </div>
     </div>
+    
     @yield('content')
 
     <!-- Footer -->
@@ -395,6 +396,7 @@
   <script src="{{ asset('assets/vendor/chart.js/dist/Chart.extension.js') }} "></script>
   <!-- Argon JS -->
   <script src="{{ asset('assets/js/argon.js?v=1.2.0') }} "></script>
+  @stack('scripts')
 </body>
 
 </html>
