@@ -44,8 +44,11 @@ class DrainaseController extends Controller
     {
         $token = $request->session()->get('token', 'default');
         $id_admin = $request->session()->get('id_admin', 'default');
-        // dd($request->post('geometry'));
-        // dd($request->file('foto'));
+
+        //image logic
+        $image = $_FILES['foto'];
+        $file_tmp = $image['tmp_name'];
+        $data = file_get_contents($file_tmp);
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token"
@@ -55,7 +58,7 @@ class DrainaseController extends Controller
             'lebar' => $request->post('lebar'),
             'panjang' => $request->post('panjang'),
             'kedalaman' => $request->post('kedalaman'),
-            'foto' => $_FILES['foto']['name'],
+            'foto' => base64_encode($data),
             'bahan' => $request->post('bahan'),
             'kondisi' => $request->post('kondisi'),
             'akhir_pembuangan' => $request->post('akhir_pembuangan'),
@@ -64,7 +67,7 @@ class DrainaseController extends Controller
             'geometry' => $request->post('geometry'),
         ]);
 
-        dd($response->json());
+        // dd($response->json());
         return redirect('/drainase');
     }
 
@@ -88,8 +91,12 @@ class DrainaseController extends Controller
     {
         $token = $request->session()->get('token', 'default');
         $id_admin = $request->session()->get('id_admin', 'default');
-        // dd($request->post('geometry'));
-        // dd($request->file('foto'));
+        
+        //image logic
+        $image = $_FILES['foto'];
+        $file_tmp = $image['tmp_name'];
+        $data = file_get_contents($file_tmp);
+
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token"
@@ -100,7 +107,7 @@ class DrainaseController extends Controller
             'lebar' => $request->post('lebar'),
             'panjang' => $request->post('panjang'),
             'kedalaman' => $request->post('kedalaman'),
-            'foto' => $_FILES['foto']['name'],
+            'foto' => base64_encode($data),
             'bahan' => $request->post('bahan'),
             'kondisi' => $request->post('kondisi'),
             'akhir_pembuangan' => $request->post('akhir_pembuangan'),
@@ -109,7 +116,7 @@ class DrainaseController extends Controller
             'geometry' => $request->post('geometry'),
         ]);
 
-        dd($response->json());
+        // dd($response->json());
         return redirect('/drainase/detail/'. $id);
     }
 }

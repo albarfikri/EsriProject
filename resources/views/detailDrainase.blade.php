@@ -38,7 +38,7 @@
                 <table class="table align-items-center table-flush">
                     <tr>
                         <td colspan="2" class="text-center">
-                            <img src="{{ asset('assets/img/theme/team-1.jpg') }}" width="200">
+                            <img src="{{ config('global.base_url') }}{{ $item['foto'] }}" width="200">
                         </td>
                     </tr>
                     <tr>

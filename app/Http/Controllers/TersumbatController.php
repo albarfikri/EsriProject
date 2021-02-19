@@ -50,13 +50,18 @@ class TersumbatController extends Controller
         $id_admin = $request->session()->get('id_admin', 'default');
         $geo = $request->post('geometry');
         $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
+
+        //image logic
+        $image = $_FILES['foto'];
+        $file_tmp = $image['tmp_name'];
+        $data = file_get_contents($file_tmp);
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token"
         ])->post('http://gis-drainase.pocari.id/api/titik_tersumbat', [
             'id_admin' => $id_admin,
             'nama_jalan' => $request->post('nama_jalan'),
-            'foto' => $_FILES['foto']['name'],
+            'foto' => base64_encode($data),
             'keterangan' => $request->post('keterangan'),
             'geometry' => $point,
         ]);
@@ -71,6 +76,11 @@ class TersumbatController extends Controller
         $id_admin = $request->session()->get('id_admin', 'default');
         $geo = $request->post('geometry');
         $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
+
+        //image logic
+        $image = $_FILES['foto'];
+        $file_tmp = $image['tmp_name'];
+        $data = file_get_contents($file_tmp);
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token"
@@ -78,13 +88,13 @@ class TersumbatController extends Controller
             '_method' => "put",
             'id_admin' => $id_admin,
             'nama_jalan' => $request->post('nama_jalan'),
-            'foto' => $_FILES['foto']['name'],
+            'foto' => base64_encode($data),
             'keterangan' => $request->post('keterangan'),
             'geometry' => $point,
         ]);
 
         // dd($response->json());
-        return redirect('/detail/tersumbat/' . $id );
+        return redirect('/tersumbat/detail/' . $id );
     }
 
     public function delete(Request $request, $id)

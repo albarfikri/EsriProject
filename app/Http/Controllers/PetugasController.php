@@ -31,6 +31,11 @@ class PetugasController extends Controller
 
     public function create(Request $request) {
         $token = $request->session()->get('token', 'default');
+
+        //image logic
+        $image = $_FILES['foto'];
+        $file_tmp = $image['tmp_name'];
+        $data = file_get_contents($file_tmp);
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token"
@@ -39,7 +44,7 @@ class PetugasController extends Controller
             'password' => $request->post('password'),
             'password_confirmation' => $request->post('password2'),
             'nama' => $request->post('nama'),
-            'foto' => $request->file('foto'),
+            'foto' => base64_encode($data),
             'no_hp' => $request->post('no_hp'),
             'posisi_petugas' => $request->post('posisi_petugas'),
             'tempat_lahir' => $request->post('tempat_lahir'),
@@ -67,6 +72,11 @@ class PetugasController extends Controller
 
     public function update(Request $request, $id) {
         $token = $request->session()->get('token', 'default');
+
+        //image logic
+        $image = $_FILES['foto'];
+        $file_tmp = $image['tmp_name'];
+        $data = file_get_contents($file_tmp);
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token"
@@ -74,7 +84,7 @@ class PetugasController extends Controller
             '_method' => 'put',
             'email' => $request->post('email'),
             'nama' => $request->post('nama'),
-            'foto' => $request->file('foto'),
+            'foto' => base64_encode($data),
             'no_hp' => $request->post('no_hp'),
             'posisi_petugas' => $request->post('posisi_petugas'),
             'tempat_lahir' => $request->post('tempat_lahir'),
@@ -82,7 +92,7 @@ class PetugasController extends Controller
             'alamat' => $request->post('alamat')
         ]);
         
-        dd($response->json());
+        // dd($response->json());
         return redirect('/petugas/detail/' . $id);
     }
 }

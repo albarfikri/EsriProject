@@ -51,22 +51,27 @@ class BanjirController extends Controller
         $id_admin = $request->session()->get('id_admin', 'default');
         $geo = $request->post('geometry');
         $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
+        // dd($request->file('foto'));
+
+        //image logic
+        $image = $_FILES['foto'];
+        $file_tmp = $image['tmp_name'];
+        $data = file_get_contents($file_tmp);
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token",
-            'Content-Type' => 'multipart/form-data',
         ])->post('http://gis-drainase.pocari.id/api/titik_banjir', [
             'id_admin' => $id_admin,
             'nama_jalan' => $request->post('nama_jalan'),
             'kondisi_kerusakan' => $request->post('kondisi'),
-            'foto' => $_FILES['foto']['name'],
+            'foto' => base64_encode($data),
             'keterangan' => $request->post('keterangan'),
             'geometry' => $point,
         ]);
 
         // dd($_FILES['foto']);
 
-        dd($response->json());
+        // dd($response->json());
         return redirect('/banjir');
     }
 
@@ -76,16 +81,20 @@ class BanjirController extends Controller
         $id_admin = $request->session()->get('id_admin', 'default');
         $geo = $request->post('geometry');
         $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
+
+        //image logic
+        $image = $_FILES['foto'];
+        $file_tmp = $image['tmp_name'];
+        $data = file_get_contents($file_tmp);
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token",
-            'Content-Type' => 'multipart/form-data',
         ])->post('http://gis-drainase.pocari.id/api/titik_banjir/' . $id, [
             '_method' => 'put',
             'id_admin' => $id_admin,
             'nama_jalan' => $request->post('nama_jalan'),
             'kondisi_kerusakan' => $request->post('kondisi'),
-            'foto' => $_FILES['foto']['name'],
+            'foto' => base64_encode($data),
             'keterangan' => $request->post('keterangan'),
             'geometry' => $point,
         ]);
@@ -93,7 +102,7 @@ class BanjirController extends Controller
         // dd($_FILES['foto']);
 
         // dd($response->json());
-        return redirect('/detail/banjir/' . $id);
+        return redirect('/banjir/detail/' . $id);
     }
 
     public function delete(Request $request, $id)

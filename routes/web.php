@@ -49,7 +49,7 @@ Route::prefix('tersumbat')->group(function () {
     $controller = TersumbatController::class;
     Route::get('/', [$controller, 'index']);
     Route::get('/{id}', [$controller, 'delete']);
-    Route::get('/update/{id}', [$controller, 'update']);
+    Route::post('/update/{id}', [$controller, 'update']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/addTersumbat', [$controller, 'addTersumbat']);
 });
@@ -58,6 +58,7 @@ Route::prefix('banjir')->group(function () {
     $controller = BanjirController::class;
     Route::get('/', [$controller, 'index']);
     Route::get('/{id}', [$controller, 'delete']);
+    Route::post('/update/{id}', [$controller, 'update']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/addBanjir', [$controller, 'addBanjir']);
 });

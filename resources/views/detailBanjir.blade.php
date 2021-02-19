@@ -34,7 +34,7 @@
                 <table class="table align-items-center table-flush">
                     <tr>
                         <td colspan="2" class="text-center">
-                            <img src="{{ asset('assets/img/theme/team-1.jpg') }}" width="200">
+                            <img src="{{ config('global.base_url') }}{{ $item['foto'] }}" width="200">
                         </td>
                     </tr>
                     <tr>
@@ -83,7 +83,7 @@
 
             <div class="modal-body">
 
-              <form role="form" action="/banjir/addBanjir" method="post" enctype="multipart/form-data" role="form">
+              <form role="form" action="{{ url('banjir/update/' . $item['id'] ) }}" method="post" enctype="multipart/form-data" role="form">
               @csrf
                 <div class="row">
                   <div class="col-md-12">

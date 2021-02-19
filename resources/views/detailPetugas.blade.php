@@ -18,7 +18,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('assets/img/theme/team-1.jpg') }}" width="200">
+                    <img src="{{ config('global.base_url') }}{{ $item['foto'] }}" width="200">
                 </div>
                 <div class="col-md-5 mx-3">
                     <table cellpadding="9">
