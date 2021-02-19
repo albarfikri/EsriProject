@@ -11,15 +11,16 @@
     <div class="col-md-6">
       <div class="card">
         <!-- Card header -->
-        <div class="card-header bg-transparent">
+        <div class="card-header bg-transparent d-flex justify-content-between">
           <h3 class="mb-0">Detail Petugas</h3>
+          <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default">Edit</button>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4">
                     <img src="{{ asset('assets/img/theme/team-1.jpg') }}" width="200">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 mx-3">
                     <table cellpadding="9">
                         <tr>
                             <td>Nama</td>
@@ -53,24 +54,20 @@
       </div>
     </div>
   </div>
-
-  <!-- form modal input data dibawah -->
-  <div class="row">
-    <div class="col-md-4">
+ 
       <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
         <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
           <div class="modal-content">
 
             <div class="modal-header">
-              <h6 class="modal-title" id="modal-title-default">Tambah Data Petugas</h6>
+              <h6 class="modal-title" id="modal-title-default">Edit Data Petugas</h6>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-
             <div class="modal-body">
 
-              <form action="/petugas/addPetugas" method="post" role="form" enctype="multipart/form-data">
+              <form action="{{ url('petugas/update/' . $data['id'])  }}" method="post" role="form" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="col-md-12">
@@ -79,7 +76,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Petugas" type="text" name="nama">
+                        <input class="form-control" placeholder="Nama Petugas" value="{{ $data['nama'] }}" type="text" name="nama">
                       </div>
                     </div>
                   </div>
@@ -89,27 +86,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Email" type="email" name="email">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Kata Sandi" type="password" name="password">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Konfirmasi Kata Sandi" type="password" name="password2">
+                        <input class="form-control" placeholder="Email" value="{{ $data['email'] }}" type="email" name="email">
                       </div>
                     </div>
                   </div>
@@ -119,7 +96,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Alamat Petugas" type="text" name="alamat">
+                        <input class="form-control" placeholder="Alamat Petugas" value="{{ $data['alamat'] }}" type="text" name="alamat">
                       </div>
                     </div>
                   </div>
@@ -139,7 +116,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Posisi" type="text" name="posisi_petugas">
+                        <input class="form-control" placeholder="Posisi" value="{{ $data['posisi_petugas'] }}" type="text" name="posisi_petugas">
                       </div>
                     </div>
                   </div>
@@ -149,7 +126,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                         </div>
-                        <input class="form-control" placeholder="No Hp" type="text" name="no_hp">
+                        <input class="form-control" placeholder="No Hp" value="{{ $data['no_hp'] }}" type="text" name="no_hp">
                       </div>
                     </div>
 
@@ -160,7 +137,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Tempat Lahir" type="text" name="tempat_lahir">
+                        <input class="form-control" placeholder="Tempat Lahir" value="{{ $data['tempat_lahir'] }}" type="text" name="tempat_lahir">
                       </div>
                     </div>
                   </div>
@@ -170,7 +147,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                         </div>
-                        <input class="form-control" type="date" id="example-date-input" name="tgl_lahir">
+                        <input class="form-control" value="{{ $data['tgl_lahir'] }}" type="date" id="example-date-input" name="tgl_lahir">
                       </div>
                     </div>
 
@@ -186,6 +163,4 @@
         </div>
       </div>
     </div>
-  </div>
-  </div>
   @endsection

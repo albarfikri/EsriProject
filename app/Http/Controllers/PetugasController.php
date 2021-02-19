@@ -39,7 +39,7 @@ class PetugasController extends Controller
             'password' => $request->post('password'),
             'password_confirmation' => $request->post('password2'),
             'nama' => $request->post('nama'),
-            'foto' => $_FILES['foto']['name'],
+            'foto' => $request->file('foto'),
             'no_hp' => $request->post('no_hp'),
             'posisi_petugas' => $request->post('posisi_petugas'),
             'tempat_lahir' => $request->post('tempat_lahir'),
@@ -47,17 +47,42 @@ class PetugasController extends Controller
             'alamat' => $request->post('alamat')
         ]);
         
+        dd($response->json());
+        return redirect('/petugas');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token"
+        ])->post('http://gis-drainase.pocari.id/api/petugas/' . $id, [
+            '_method' => 'delete'
+        ]);
+
         // dd($response->json());
         return redirect('/petugas');
     }
 
-    public function delete(Request $request, $id_petugas)
-    {
+    public function update(Request $request, $id) {
         $token = $request->session()->get('token', 'default');
-        $data = Http::withHeaders([
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
             'Authorization' => "Bearer $token"
-            ])->delete('http://gis-drainase.pocari.id/api/petugas/' . $id_petugas);
+            ])->post('http://gis-drainase.pocari.id/api/petugas/' . $id, [
+            '_method' => 'put',
+            'email' => $request->post('email'),
+            'nama' => $request->post('nama'),
+            'foto' => $request->file('foto'),
+            'no_hp' => $request->post('no_hp'),
+            'posisi_petugas' => $request->post('posisi_petugas'),
+            'tempat_lahir' => $request->post('tempat_lahir'),
+            'tgl_lahir' => $request->post('tgl_lahir'),
+            'alamat' => $request->post('alamat')
+        ]);
         
-        dd($data);
+        dd($response->json());
+        return redirect('/petugas/detail/' . $id);
     }
 }

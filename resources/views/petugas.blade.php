@@ -49,9 +49,8 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="/petugas/detail/{{$item['id']}}">Detail</a>
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="/petugas/deletePetugas/{{$item['id']}}">Hapus</a>
+                      <a class="dropdown-item" href="{{ url('petugas/detail/' . $item['id']) }}">Detail</a>
+                      <a class="dropdown-item" href="{{ url('petugas/' . $item['id']) }}">Hapus</a>
                     </div>
                   </div>
                 </td>
@@ -106,7 +105,7 @@
 
             <div class="modal-body">
 
-              <form action="/petugas/addPetugas" method="post" role="form" enctype="multipart/form-data">
+              <form action="/petugas/create" method="post" role="form" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="col-md-12">
@@ -225,3 +224,4 @@
   </div>
   </div>
   @endsection
+  

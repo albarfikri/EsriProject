@@ -1,5 +1,16 @@
 @extends('layout.main')
 
+@section('styles')
+
+  <style>
+        #map {
+            width: 100%;
+            height: 600px;
+        }
+  </style>
+
+@endsection
+
 @section('title', 'Jaringan Drainase')
 
 @section('head_title', 'Jaringan Drainase')
@@ -59,9 +70,8 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="/drainase/detail/{{ $item['id'] }}">Detail</a>
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Hapus</a>
+                      <a class="dropdown-item" href="{{ url('drainase/detail/' . $item['id']) }}">Detail</a>
+                      <a class="dropdown-item" href="{{ url('drainase/' . $item['id']) }}">Hapus</a>
                     </div>
                   </div>
                 </td>
@@ -101,10 +111,8 @@
   </div>
 
   <!-- form modal input data dibawah -->
-  <div class="row">
-    <div class="col-md-4">
       <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-        <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
 
             <div class="modal-header">
@@ -126,6 +134,7 @@
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
                         <input class="form-control" placeholder="Nama Jalan" name="nama_jalan" type="text">
+                        <input name="geometry" id="geometry" type="hidden">
                       </div>
                     </div>
                   </div>
@@ -204,17 +213,7 @@
                     </div>
 
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Geometery" name="geometry" type="text">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <div class="form-group">
                       <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
@@ -238,7 +237,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-12">
+                  <div class="col-md-3">
+                    <a class="btn btn-warning mt-3 text-white" data-toggle="modal" data-target="#modalMaps">Geometry</a>
+                  </div>
+                  <div class="col-md-3 offset-6">
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary my-4">Kirim</button>
                     </div>
@@ -253,6 +255,91 @@
         </div>
       </div>
     </div>
+
+<!-- Vertically centered modal -->
+<div class="modal fade" id="modalMaps">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+     <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pilih Koordinat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="map"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Selesai</button>
+      </div>
+    </div>
   </div>
 </div>
+
 @endsection
+
+@push('scripts')
+  <script>
+    let mymap = null;
+    let accessToken = 'pk.eyJ1Ijoicml3YWxzeWFtIiwiYSI6ImNrajB5c21obTF1ZmQycnAyOTY3N2VycXUifQ.DAfn6MTxzf_BU3lqD0fIgQ'
+
+    const init = async () => {
+
+        let tileLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            maxZoom: 18,
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: accessToken
+        });
+
+        mymap = L.map('map', {
+            layers: [
+                tileLayer,
+            ]
+        }).setView([0.5359175,101.4382695], 13);
+
+        let line = [];
+        let geoLine = [];
+        let polyline = null;
+
+        mymap.addEventListener('click', (e) => {
+          const coord = [e.latlng.lat, e.latlng.lng];
+          const geoCoord = [e.latlng.lng, e.latlng.lat];
+          line.push(coord);
+          geoLine.push(geoCoord);
+          L.marker(coord).addTo(mymap);
+          polyline = L.polyline(line, {
+            color: "black",
+            width: 10
+          }).addTo(mymap);
+          
+          let lines = {
+            "type": "LineString",
+            "coordinates" : 
+              geoLine
+          }
+
+          console.log(JSON.stringify(lines));
+
+          $('#geometry').val(JSON.stringify(lines));
+
+        });
+
+        
+
+        $('#modalMaps').on('shown.bs.modal', function(){
+          setTimeout(function() {
+            mymap.invalidateSize();
+          }, 1);
+        });
+    }
+
+    init();
+
+    
+
+  </script>
+
+@endpush

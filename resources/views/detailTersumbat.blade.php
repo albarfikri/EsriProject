@@ -24,9 +24,9 @@
           <div class="card">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-1">Detail</h6>
+                <div class="col d-flex justify-content-between">
                   <h5 class="h3 mb-0">{{ $item['nama_jalan'] }}</h5>
+                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default">Edit</button>
                 </div>
               </div>
             </div>
@@ -42,8 +42,8 @@
                         <td>{{ $item['nama_jalan'] }}</td>
                     </tr>
                     <tr>
-                        <td>Geometry</td>
-                        <td>{{ $item['geometry'] }}</td>
+                        <td>Keterangan</td>
+                        <td>{{ $item['keterangan'] }}</td>
                     </tr>
                 </table>
             </div>
@@ -67,7 +67,8 @@
           </div>
   </div>
 
-  <!-- form modal input data dibawah -->
+
+  <!-- form modal edit tersumbat -->
   <div class="row">
     <div class="col-md-4">
       <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
@@ -75,7 +76,7 @@
           <div class="modal-content">
 
             <div class="modal-header">
-              <h6 class="modal-title" id="modal-title-default">Tambah Data Petugas</h6>
+              <h6 class="modal-title" id="modal-title-default">Edit Data Titik Tersumbat</h6>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -83,16 +84,16 @@
 
             <div class="modal-body">
 
-              <form action="/petugas/addPetugas" method="post" role="form" enctype="multipart/form-data">
+              <form action="{{ url('tersumbat/update/' . $item['id'] ) }}" method="post" enctype="multipart/form-data" role="form">
                 @csrf
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group mb-3">
                       <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                          <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Petugas" type="text" name="nama">
+                        <input class="form-control" placeholder="Nama Jalan" value="{{ $item['nama_jalan'] }}" type="text" name="nama_jalan">
                       </div>
                     </div>
                   </div>
@@ -100,39 +101,9 @@
                     <div class="form-group mb-3">
                       <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                          <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Email" type="email" name="email">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Kata Sandi" type="password" name="password">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Konfirmasi Kata Sandi" type="password" name="password2">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group mb-3">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Alamat Petugas" type="text" name="alamat">
+                        <input class="form-control" placeholder="Geometry" value="{{ $item['geometry'] }}" type="text" name="geometry"> 
                       </div>
                     </div>
                   </div>
@@ -142,51 +113,22 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-image"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple name="foto">
+                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" name="foto" multiple>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Posisi" type="text" name="posisi_petugas">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Deskripsi</label>
                       <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="No Hp" type="text" name="no_hp">
-                      </div>
-                    </div>
 
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group mb-3">
-                      <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-map-big"></i></span>
+                          <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Tempat Lahir" type="text" name="tempat_lahir">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-                        </div>
-                        <input class="form-control" type="date" id="example-date-input" name="tgl_lahir">
-                      </div>
-                    </div>
 
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="keterangan" rows="3">{{ $item['deskripsi'] }}</textarea>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-12">
                     <div class="text-center">
@@ -200,8 +142,7 @@
       </div>
     </div>
   </div>
-  </div>
-
+</div>
 @endsection
 
 @push('scripts')

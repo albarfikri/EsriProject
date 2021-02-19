@@ -53,7 +53,8 @@ class BanjirController extends Controller
         $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
         $response = Http::withHeaders([
             'accept' => 'application/json',
-            'Authorization' => "Bearer $token"
+            'Authorization' => "Bearer $token",
+            'Content-Type' => 'multipart/form-data',
         ])->post('http://gis-drainase.pocari.id/api/titik_banjir', [
             'id_admin' => $id_admin,
             'nama_jalan' => $request->post('nama_jalan'),
@@ -61,6 +62,48 @@ class BanjirController extends Controller
             'foto' => $_FILES['foto']['name'],
             'keterangan' => $request->post('keterangan'),
             'geometry' => $point,
+        ]);
+
+        // dd($_FILES['foto']);
+
+        dd($response->json());
+        return redirect('/banjir');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $id_admin = $request->session()->get('id_admin', 'default');
+        $geo = $request->post('geometry');
+        $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token",
+            'Content-Type' => 'multipart/form-data',
+        ])->post('http://gis-drainase.pocari.id/api/titik_banjir/' . $id, [
+            '_method' => 'put',
+            'id_admin' => $id_admin,
+            'nama_jalan' => $request->post('nama_jalan'),
+            'kondisi_kerusakan' => $request->post('kondisi'),
+            'foto' => $_FILES['foto']['name'],
+            'keterangan' => $request->post('keterangan'),
+            'geometry' => $point,
+        ]);
+
+        // dd($_FILES['foto']);
+
+        // dd($response->json());
+        return redirect('/detail/banjir/' . $id);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token"
+        ])->post('http://gis-drainase.pocari.id/api/titik_banjir/' . $id, [
+            '_method' => 'delete'
         ]);
 
         // dd($response->json());

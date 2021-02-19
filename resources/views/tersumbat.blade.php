@@ -21,8 +21,7 @@
             <thead class="thead-light">
               <tr>
                 <th scope="col" class="sort" data-sort="name">Nama Jalan</th>
-                <th scope="col" class="sort" data-sort="budget">Geometry</th>
-                <th scope="col">Foto Titik Banjir</th>
+                <th scope="col" class="sort" data-sort="budget">Keterangan</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -40,15 +39,7 @@
                   </div>
                 </th>
                 <td class="budget">
-                  {{$item['geometry']}}
-                </td>
-                <td>
-                  <div class="avatar-group">
-                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                      <img alt="Image placeholder" src="{{$item['foto']}}">
-                    </a>
-
-                  </div>
+                  {{$item['keterangan']}}
                 </td>
 
                 <td class="text-right">
@@ -57,9 +48,8 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="/tersumbat/detail/{{ $item['id'] }}">Detail</a>
-                      <a class="dropdown-item" href="#">Delete</a>
-                      <a class="dropdown-item" href="#">Edit</a>
+                      <a class="dropdown-item" href="{{ url('tersumbat/detail/' . $item['id']) }}">Detail</a>
+                      <a class="dropdown-item" href="{{ url('tersumbat/' . $item['id']) }}">Delete</a>
                     </div>
                   </div>
                 </td>

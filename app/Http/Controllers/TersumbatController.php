@@ -64,4 +64,40 @@ class TersumbatController extends Controller
         // dd($response->json());
         return redirect('/tersumbat');
     }
+
+    public function update(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $id_admin = $request->session()->get('id_admin', 'default');
+        $geo = $request->post('geometry');
+        $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token"
+        ])->post('http://gis-drainase.pocari.id/api/titik_tersumbat/' . $id, [
+            '_method' => "put",
+            'id_admin' => $id_admin,
+            'nama_jalan' => $request->post('nama_jalan'),
+            'foto' => $_FILES['foto']['name'],
+            'keterangan' => $request->post('keterangan'),
+            'geometry' => $point,
+        ]);
+
+        // dd($response->json());
+        return redirect('/detail/tersumbat/' . $id );
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token"
+        ])->post('http://gis-drainase.pocari.id/api/titik_tersumbat/' . $id, [
+            '_method' => 'delete'
+        ]);
+
+        // dd($response->json());
+        return redirect('/tersumbat');
+    }
 }

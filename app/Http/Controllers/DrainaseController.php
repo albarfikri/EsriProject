@@ -29,11 +29,6 @@ class DrainaseController extends Controller
 
         $point = [
             "type" => "Feature",
-            "properties" => [
-                "name" => "Coors Field",
-                "amenity" => "Baseball Stadium",
-                "popupContent" => "This is where the Rockies play!"
-            ],
             "geometry" => json_decode($drainase['geometry'], true),
         ];
 
@@ -49,8 +44,8 @@ class DrainaseController extends Controller
     {
         $token = $request->session()->get('token', 'default');
         $id_admin = $request->session()->get('id_admin', 'default');
-        $geo = $request->post('geometry');
-        $point = '{"type": "Point", "coordinates": [ ' . $geo . '] }';
+        // dd($request->post('geometry'));
+        // dd($request->file('foto'));
         $response = Http::withHeaders([
             'accept' => 'application/json',
             'Authorization' => "Bearer $token"
@@ -66,10 +61,55 @@ class DrainaseController extends Controller
             'akhir_pembuangan' => $request->post('akhir_pembuangan'),
             'arah_alir' => $request->post('arah_alir'),
             'tipe_drainase' => $request->post('tipe_drainase'),
-            'geometry' => $point,
+            'geometry' => $request->post('geometry'),
+        ]);
+
+        dd($response->json());
+        return redirect('/drainase');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $id_admin = $request->session()->get('id_admin', 'default');
+        // dd($request->post('geometry'));
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token"
+        ])->post('http://gis-drainase.pocari.id/api/drainase/' . $id, [
+            '_method' => 'delete'
         ]);
 
         // dd($response->json());
         return redirect('/drainase');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $token = $request->session()->get('token', 'default');
+        $id_admin = $request->session()->get('id_admin', 'default');
+        // dd($request->post('geometry'));
+        // dd($request->file('foto'));
+        $response = Http::withHeaders([
+            'accept' => 'application/json',
+            'Authorization' => "Bearer $token"
+        ])->post('http://gis-drainase.pocari.id/api/drainase/' . $id, [
+            '_method' => 'put',
+            'id_admin' => $id_admin,
+            'nama_jalan' => $request->post('nama_jalan'),
+            'lebar' => $request->post('lebar'),
+            'panjang' => $request->post('panjang'),
+            'kedalaman' => $request->post('kedalaman'),
+            'foto' => $_FILES['foto']['name'],
+            'bahan' => $request->post('bahan'),
+            'kondisi' => $request->post('kondisi'),
+            'akhir_pembuangan' => $request->post('akhir_pembuangan'),
+            'arah_alir' => $request->post('arah_alir'),
+            'tipe_drainase' => $request->post('tipe_drainase'),
+            'geometry' => $request->post('geometry'),
+        ]);
+
+        dd($response->json());
+        return redirect('/drainase/detail/'. $id);
     }
 }
