@@ -31,6 +31,7 @@ Route::prefix('petugas')->group(function () {
     Route::get('/', [$controller, 'index']);
     Route::get('/{id}', [$controller, 'delete']);
     Route::post('/update/{id}', [$controller, 'update']);
+    Route::post('/updateFoto/{id}', [$controller, 'updateFoto']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/create', [$controller, 'create']);
     // Route::get('/create/{id}', [$controller, 'create']);
@@ -41,6 +42,7 @@ Route::prefix('drainase')->group(function () {
     Route::get('/', [$controller, 'index']);
     Route::get('/{id}', [$controller, 'delete']);
     Route::post('/update/{id}', [$controller, 'update']);
+    Route::post('/updateFoto/{id}', [$controller, 'updateFoto']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/addDrainase', [$controller, 'addDrainase']);
 });

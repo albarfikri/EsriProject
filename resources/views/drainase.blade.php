@@ -133,8 +133,18 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Jalan" name="nama_jalan" type="text">
+                        <input class="form-control @error('nama_jalan') is-invalid  @enderror" value="{{ @old('nama_jalan') }}" placeholder="Nama Jalan" name="nama_jalan" type="text">
+                        @error('nama_jalan')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                         <input name="geometry" id="geometry" type="hidden">
+                        @error('geometry')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -145,7 +155,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Lebar" name="lebar" type="text">
+                        <input class="form-control @error('lebar') is-invalid  @enderror" value="{{ @old('lebar') }}" placeholder="Lebar" name="lebar" type="text">
+                         @error('lebar')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -155,7 +170,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Panjang" name="panjang" type="text">
+                        <input class="form-control @error('panjang') is-invalid  @enderror" value="{{ @old('panjang') }}" placeholder="Panjang" name="panjang" type="text">
+                         @error('panjang')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
 
@@ -166,7 +186,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Kedalaman" name="kedalaman" type="text">
+                        <input class="form-control @error('kedalaman') is-invalid  @enderror" value="{{ @old('kedalaman') }}" placeholder="Kedalaman" name="kedalaman" type="text">
+                         @error('kedalaman')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -176,7 +201,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Bahan" name="bahan" type="text">
+                        <input class="form-control @error('bahan') is-invalid  @enderror" value="{{ @old('bahan') }}" placeholder="Bahan" name="bahan" type="text">
+                         @error('bahan')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
 
@@ -187,7 +217,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-image"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Foto Titik Banjir" name="foto" type="file" multiple>
+                        <input class="form-control @error('foto') is-invalid  @enderror" value="{{ @old('foto') }}" placeholder="Foto Titik Banjir" name="foto" type="file" multiple>
+                         @error('foto')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -198,7 +233,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Akhir Pembuangan" name="akhir_pembuangan" type="text">
+                        <input class="form-control @error('akhir_pembuangan') is-invalid  @enderror" value="{{ @old('akhir_pembuangan') }}" placeholder="Akhir Pembuangan" name="akhir_pembuangan" type="text">
+                         @error('akhir_pembuangan')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -208,23 +248,46 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Arah Alir" name="arah_alir" type="text">
+                        <input class="form-control @error('arah_alir') is-invalid  @enderror" value="{{ @old('arah_alir') }}" placeholder="Arah Alir" name="arah_alir" type="text">
+                         @error('arah_alir')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
 
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <div class="input-group input-group-merge input-group-alternative">
+                      <input id="tipe" type="hidden" name="tipe_name" value="tipe_drainase">
+                      <select name="tipe_drainase" id="tipe-drainase" class="form-control">
+                        <option>Tipe Drainase</option>
+                        @foreach ( $kategori as $k )
+                          <option value="{{ $k['kategori'] }}">{{ $k['kategori'] }}</option>
+                        @endforeach
+                      </select>
+                      {{-- <div class="input-group input-group-merge input-group-alternative">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Tipe Drainase" name="tipe_drainase" type="text">
-                      </div>
+                        <input class="form-control @error('tipe_drainase') is-invalid  @enderror" value="{{ @old('tipe_drainase') }}" placeholder="Tipe Drainase" name="tipe_drainase" type="text">
+                         @error('tipe_drainase')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
+                      </div> --}}
                     </div>
-
                   </div>
                   <div class="col-md-12">
+                    <label class="form-label">Tipe Baru</label>
+                    <input type="text" class="form-control" id="tipe-baru" name="tipe-baru" placeholder="tipe baru" disabled>
+                  </div>
+                  <div class="col-md-12 mt-1">
+                    <button type="button" id="btn-tipe" class="btn btn-sm btn-primary">Tambah</button>
+                  </div>
+                  <div class="col-md-12 mt-3">
                     <div class="form-group">
                       <label for="exampleFormControlTextarea1">Kondisi</label>
                       <div class="input-group input-group-merge input-group-alternative">
@@ -233,7 +296,12 @@
                           <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
                         </div>
 
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="kondisi" rows="3"></textarea>
+                        <textarea class="form-control @error('kondisi') is-invalid  @enderror" id="exampleFormControlTextarea1" name="kondisi" rows="3">{{ old('kondisi') }}</textarea>
+                        @error('kondisi')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -256,7 +324,7 @@
       </div>
     </div>
 
-<!-- Vertically centered modal -->
+<!-- modal peta -->
 <div class="modal fade" id="modalMaps">
   <div class="modal-dialog modal-dialog-centered modal-lg">
      <div class="modal-content">
@@ -270,6 +338,7 @@
         <div id="map"></div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-warning" id="hapus">Reset</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Selesai</button>
       </div>
     </div>
@@ -280,6 +349,12 @@
 
 @push('scripts')
   <script>
+    @if ($errors->any())
+        $(window).on('load', () => {
+          $('#modal-default').modal('show');
+        });
+    @endif
+
     let mymap = null;
     let accessToken = 'pk.eyJ1Ijoicml3YWxzeWFtIiwiYSI6ImNrajB5c21obTF1ZmQycnAyOTY3N2VycXUifQ.DAfn6MTxzf_BU3lqD0fIgQ'
 
@@ -321,24 +396,35 @@
               geoLine
           }
 
-          console.log(JSON.stringify(lines));
-
           $('#geometry').val(JSON.stringify(lines));
 
+          
         });
 
-        
+        $('#hapus').on('click', function() {
+            mymap.eachLayer(function (layer) {
+                if (!!layer.toGeoJSON) {
+                  mymap.removeLayer(layer);
+                  line = [];
+                }
+            });
+        });
 
         $('#modalMaps').on('shown.bs.modal', function(){
           setTimeout(function() {
             mymap.invalidateSize();
           }, 1);
         });
+
+        $('#btn-tipe').on('click', function() {
+          $('#tipe').val("tipe-baru");
+          $('#tipe-baru').prop('disabled', false);
+          $('#tipe-drainase').prop('disabled', true);
+          $(this).prop('disabled', true);
+        })
     }
 
     init();
-
-    
 
   </script>
 
