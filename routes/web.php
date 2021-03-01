@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DrainaseController;
 use App\Http\Controllers\TersumbatController;
 use App\Http\Controllers\BanjirController;
+use App\Http\Controllers\PetaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 
@@ -63,6 +64,11 @@ Route::prefix('banjir')->group(function () {
     Route::post('/update/{id}', [$controller, 'update']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/addBanjir', [$controller, 'addBanjir']);
+});
+
+Route::prefix('peta')->group(function(){
+    $controller = PetaController::class;
+    Route::get('/',[$controller, 'index']);
 });
 
 
