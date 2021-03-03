@@ -20,14 +20,26 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
+                <th scope="col">No</th>
                 <th scope="col" class="sort" data-sort="name">Nama Jalan</th>
                 <th scope="col" class="sort" data-sort="budget">Keterangan</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody class="list">
+              <?php $no = 0; ?>
               @foreach($data as $item)
+              <?php $no++; ?>
               <tr>
+                <th scope="row">
+
+                  <div class="media align-items-center">
+                    <div class="media-body">
+
+                      <span class="name mb-0 text-sm">{{ $no }}</span>
+                    </div>
+                  </div>
+                </th>
                 <th scope="row">
                   <div class="media align-items-center">
                     <!-- <a href="#" class="avatar rounded-circle mr-3">
@@ -97,7 +109,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Geometry" type="text" name="geometry"> 
+                        <input class="form-control" placeholder="Geometry" type="text" name="geometry">
                       </div>
                     </div>
                   </div>

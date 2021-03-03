@@ -34,7 +34,7 @@
                 <table class="table align-items-center table-flush">
                     <tr>
                         <td colspan="2" class="text-center">
-                            <img src="{{ config('global.base_url') }}{{ $item['foto'] }}" width="200">
+                            <img src="{{ config('global.base_url') }}{{ $item['foto'] }}" width="330" height="460">
                         </td>
                     </tr>
                     <tr>

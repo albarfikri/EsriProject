@@ -40,12 +40,12 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link {!! '/' == request()->path() ? 'active' : '' !!}" href="/">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link {!! request()->is('petugas/*') || request()->is('petugas') ? 'active' : '' !!}" href="/petugas">
                 <i class="ni ni-badge text-orange"></i>
@@ -71,9 +71,21 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {!! request()->is('laporan/*') ? 'active' : '' !!}" href="laporan">
+              <a class="nav-link {!! request()->is('peta/*') ? 'active' : '' !!}" href="/peta">
+                <i class="ni ni-world-2 text-warning"></i>
+                <span class="nav-link-text">Seluruh Pemetaan</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {!! request()->is('laporan/*') || request()->is('laporanbanjir') || request()->is('laporan')  ? 'active' : '' !!}" href="/laporan">
                 <i class="ni ni-collection text-info"></i>
-                <span class="nav-link-text">Laporan</span>
+                <span class="nav-link-text">Laporan Pengaduan</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {!! request()->is('riwayat/*') || request()->is('riwayat') || request()->is('riwayatditolak') ? 'active' : '' !!}" href="/riwayat">
+                <i class="ni ni-bullet-list-67 text-danger"></i>
+                <span class="nav-link-text">Riwayat</span>
               </a>
             </li>
           </ul>
@@ -294,7 +306,7 @@
                     <img alt="Image placeholder" src="{{ asset('assets/img/theme/team-4.jpg') }} ">
                   </span>
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                    <span class="mb-0 text-sm  font-weight-bold">Welcome, Admin !</span>
                   </div>
                 </div>
               </a>
@@ -309,14 +321,6 @@
                 <a href="#!" class="dropdown-item">
                   <i class="ni ni-settings-gear-65"></i>
                   <span>Settings</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-calendar-grid-58"></i>
-                  <span>Activity</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-support-16"></i>
-                  <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="/" class="dropdown-item">
@@ -340,7 +344,6 @@
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="#">@yield('head_title')</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Tables</li>
                 </ol>
               </nav>
             </div>
@@ -398,5 +401,6 @@
   <script src="{{ asset('assets/js/argon.js?v=1.2.0') }} "></script>
   @stack('scripts')
 </body>
+
 
 </html>

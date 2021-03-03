@@ -39,6 +39,8 @@
                     <tr>
                         <td colspan="2" class="text-center">
                             <img src="{{ config('global.base_url') }}{{ $item['foto'] }}" width="200">
+                            <br>
+                            <button class="btn btn-primary btn-sm mt-3" data-toggle="modal" data-target="#modal-edit-foto">Ganti Foto</button>
                         </td>
                     </tr>
                     <tr>
@@ -104,7 +106,6 @@
             </div>
 
             <div class="modal-body">
-
               <form action="{{ url('drainase/update/' . $item['id']) }}" method="post" enctype="multipart/form-data" role="form">
                 @csrf
                 <div class="row">
@@ -114,8 +115,13 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Jalan" name="nama_jalan" value="{{ $item['nama_jalan'] }}" type="text">
-                        <input name="geometry" id="geometry" value="{{ $item['geometry'] }}" type="hidden">
+                        <input class="form-control @error('nama_jalan') is-invalid  @enderror" value="{{ $item['nama_jalan'] }}" placeholder="Nama Jalan" name="nama_jalan" type="text">
+                        @error('nama_jalan')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
+                        <input name="geometry" id="geometry" type="hidden">
                       </div>
                     </div>
                   </div>
@@ -126,7 +132,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Lebar" name="lebar" value="{{ $item['lebar'] }}" type="text">
+                        <input class="form-control @error('lebar') is-invalid  @enderror" value="{{ $item['lebar'] }}" placeholder="Lebar" name="lebar" type="text">
+                         @error('lebar')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -136,7 +147,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Panjang" name="panjang" value="{{ $item['panjang'] }}" type="text">
+                        <input class="form-control @error('panjang') is-invalid  @enderror" value="{{ $item['panjang'] }}" placeholder="Panjang" name="panjang" type="text">
+                         @error('panjang')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
 
@@ -147,7 +163,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Kedalaman" name="kedalaman" value="{{ $item['kedalaman'] }}" type="text">
+                        <input class="form-control @error('kedalaman') is-invalid  @enderror" value="{{ $item['kedalaman'] }}" placeholder="Kedalaman" name="kedalaman" type="text">
+                         @error('kedalaman')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -157,20 +178,15 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Bahan" name="bahan" value="{{ $item['bahan'] }}" type="text">
+                        <input class="form-control @error('bahan') is-invalid  @enderror" value="{{ $item['bahan'] }}" placeholder="Bahan" name="bahan" type="text">
+                         @error('bahan')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
 
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <div class="input-group input-group-merge input-group-alternative">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="ni ni-image"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Foto Titik Banjir" name="foto" type="file" multiple>
-                      </div>
-                    </div>
                   </div>
                   
                   <div class="col-md-6">
@@ -179,7 +195,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Akhir Pembuangan" name="akhir_pembuangan" value="{{ $item['akhir_pembuangan'] }}" type="text">
+                        <input class="form-control @error('akhir_pembuangan') is-invalid  @enderror" value="{{ $item['akhir_pembuangan'] }}" placeholder="Akhir Pembuangan" name="akhir_pembuangan" type="text">
+                         @error('akhir_pembuangan')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -189,7 +210,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Arah Alir" name="arah_alir" value="{{ $item['arah_alir'] }}" type="text">
+                        <input class="form-control @error('arah_alir') is-invalid  @enderror" value="{{ $item['arah_alir'] }}" placeholder="Arah Alir" name="arah_alir" type="text">
+                         @error('arah_alir')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
 
@@ -200,7 +226,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-ui-04"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Tipe Drainase" name="tipe_drainase" value="{{ $item['tipe_drainase'] }}" type="text">
+                        <input class="form-control @error('tipe_drainase') is-invalid  @enderror" value="{{ $item['tipe_drainase'] }}" placeholder="Tipe Drainase" name="tipe_drainase" type="text">
+                         @error('tipe_drainase')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
 
@@ -214,7 +245,12 @@
                           <span class="input-group-text"><i class="ni ni-single-copy-04"></i></span>
                         </div>
 
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="kondisi" rows="3">{{ $item['kondisi'] }}</textarea>
+                        <textarea class="form-control @error('kondisi') is-invalid  @enderror" id="exampleFormControlTextarea1" name="kondisi" rows="3">{{$item['kondisi'] }}</textarea>
+                        @error('kondisi')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -251,7 +287,60 @@
         <div id="mapUpdate"></div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-warning" id="hapus">Reset</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Selesai</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal update foto -->
+<div class="modal fade" id="modal-edit-foto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit Foto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+      </div>
+      <div class="modal-body">
+         <form action="{{ url('drainase/updateFoto/' . $item['id'])  }}" method="post" role="form" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+            <img class="mx-auto d-block" src="{{ config('global.base_url') }}{{ $item['foto'] }}" width="200">
+            </div>
+            <div class="row mt-3">
+            <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="input-group input-group-merge input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input type="hidden" value="{{ $item['nama_jalan'] }}" name="nama_jalan">
+                        <input type="hidden" value="{{ $item['lebar'] }}" name="lebar">
+                        <input type="hidden" value="{{ $item['panjang'] }}" name="panjang">
+                        <input type="hidden" value="{{ $item['kedalaman'] }}" name="kedalaman">
+                        <input type="hidden" value="{{ $item['bahan'] }}" name="bahan">
+                        <input type="hidden" value="{{ $item['kondisi'] }}" name="kondisi">
+                        <input type="hidden" value="{{ $item['akhir_pembuangan'] }}" name="akhir_pembuangan">
+                        <input type="hidden" value="{{ $item['arah_alir'] }}" name="arah_alir">
+                        <input type="hidden" value="{{ $item['tipe_drainase'] }}" name="tipe_drainase">
+                        <input type="hidden" value="{{ $item['geometry'] }}" name="geometry">
+                        <input class="form-control @error('foto') is-invalid @enderror" placeholder="Foto Titik Banjir" type="file" multiple value="{{ old('foto') }}" name="foto">
+                        @error('foto')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                        @enderror
+                      </div>
+                    </div>
+                  </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Ubah</button>
+        </form>
       </div>
     </div>
   </div>
@@ -261,6 +350,12 @@
 
 @push('scripts')
   <script>
+    @if ($errors->any())
+        $(window).on('load', () => {
+          $('#modal-default').modal('show');
+        });
+    @endif
+
     let mymap = null;
     let mapUpdate = null;
     let accessToken = 'pk.eyJ1Ijoicml3YWxzeWFtIiwiYSI6ImNrajB5c21obTF1ZmQycnAyOTY3N2VycXUifQ.DAfn6MTxzf_BU3lqD0fIgQ'
@@ -276,7 +371,7 @@
             accessToken: accessToken
         });
 
-         let tileLayer1 = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        let tileLayer1 = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             id: 'mapbox/streets-v11',
             maxZoom: 18,
@@ -298,10 +393,11 @@
         }).setView([polyline.view[1], polyline.view[0]], 17);
 
   // MAP UPDATE
-
+        let geo = L.geoJson(polyline)
         mapUpdate = L.map('mapUpdate', {
             layers: [
                 tileLayer1,
+                geo
             ]
         }).setView([polyline.view[1], polyline.view[0]], 17);
 
@@ -309,6 +405,7 @@
         let geoLine = [];
 
         mapUpdate.addEventListener('click', (e) => {
+          mapUpdate.removeLayer(geo);
           const coord = [e.latlng.lat, e.latlng.lng];
           const geoCoord = [e.latlng.lng, e.latlng.lat];
           line.push(coord);
@@ -335,6 +432,15 @@
           setTimeout(function() {
             mapUpdate.invalidateSize();
           }, 1);
+        });
+
+        $('#hapus').on('click', function() {
+              mapUpdate.eachLayer(function (layer) {
+                  if (!!layer.toGeoJSON) {
+                    mapUpdate.removeLayer(layer);
+                    line = [];
+                  }
+              });
         });
         
     }

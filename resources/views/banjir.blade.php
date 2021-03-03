@@ -20,14 +20,26 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
+                <th scope="col">No</th>
                 <th scope="col" class="sort" data-sort="name">Nama Jalan</th>
                 <th scope="col" class="sort" data-sort="status">Kondisi Kerukan</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody class="list">
+              <?php $no = 0; ?>
               @foreach($data as $item)
+              <?php $no++; ?>
               <tr>
+                <th scope="row">
+
+                  <div class="media align-items-center">
+                    <div class="media-body">
+
+                      <span class="name mb-0 text-sm">{{ $no }}</span>
+                    </div>
+                  </div>
+                </th>
                 <th scope="row">
                   <div class="media align-items-center">
                     <!-- <a href="#" class="avatar rounded-circle mr-3">
@@ -83,7 +95,7 @@
             <div class="modal-body">
 
               <form role="form" action="/banjir/addBanjir" method="post" enctype="multipart/form-data" role="form">
-              @csrf
+                @csrf
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group mb-3">

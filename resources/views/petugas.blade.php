@@ -22,14 +22,20 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
+                <th scope="col">No</th>
                 <th scope="col" class="sort" data-sort="name">Nama Petugas</th>
                 <th scope="col">Posisi</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody class="list">
+              <?php $no = 0; ?>
               @foreach($data as $item)
+              <?php $no++; ?>
               <tr>
+                <td>
+                {{ $no }}    
+                </td>
                 <th scope="row">
                   <div class="media align-items-center">
                     <div class="media-body">
@@ -114,7 +120,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Nama Petugas" type="text" name="nama">
+                        <input class="form-control @error('nama') is-invalid @enderror" placeholder="Nama Petugas" type="text" value="{{ old('nama') }}" name="nama">
+                        @error('nama')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -124,7 +135,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Email" type="email" name="email">
+                        <input class="form-control @error('email') is-invalid @enderror" placeholder="Email" type="email" value="{{ old('email') }}" name="email">
+                        @error('email')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -134,7 +150,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Kata Sandi" type="password" name="password">
+                        <input class="form-control @error('password') is-invalid @enderror" placeholder="Kata Sandi" type="password" value="{{ old('password') }}" name="password">
+                        @error('password')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -144,7 +165,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Konfirmasi Kata Sandi" type="password" name="password2">
+                        <input class="form-control @error('password2') is-invalid @enderror" placeholder="Konfirmasi Kata Sandi" type="password" value="{{ old('password2') }}" name="password2">
+                        @error('password2')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -154,7 +180,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Alamat Petugas" type="text" name="alamat">
+                        <input class="form-control @error('alamat') is-invalid @enderror" placeholder="Alamat Petugas" type="text" value="{{ old('alamat') }}" name="alamat">
+                        @error('alamat')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -164,7 +195,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-image"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Foto Titik Banjir" type="file" multiple name="foto">
+                        <input class="form-control @error('foto') is-invalid @enderror" placeholder="Foto Titik Banjir" type="file" multiple value="{{ old('foto') }}" name="foto">
+                        @error('foto')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -174,7 +210,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-square-pin"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Posisi" type="text" name="posisi_petugas">
+                        <input class="form-control @error('posisi_petugas') is-invalid @enderror" placeholder="Posisi" type="text" value="{{ old('posisi_petugas') }}" name="posisi_petugas">
+                        @error('posisi_petugas')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -184,7 +225,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
                         </div>
-                        <input class="form-control" placeholder="No Hp" type="text" name="no_hp">
+                        <input class="form-control @error('no_hp') is-invalid @enderror" placeholder="No Hp" type="text" value="{{ old('no_hp') }}" name="no_hp">
+                        @error('no_hp')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
 
@@ -195,7 +241,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-map-big"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Tempat Lahir" type="text" name="tempat_lahir">
+                        <input class="form-control @error('tempat_lahir') is-invalid @enderror" placeholder="Tempat Lahir" type="text" value="{{ old('tempat_lahir') }}" name="tempat_lahir">
+                        @error('tempat_lahir')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
                   </div>
@@ -205,7 +256,12 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                         </div>
-                        <input class="form-control" type="date" id="example-date-input" name="tgl_lahir">
+                        <input class="form-control @error('tgl_lahir') is-invalid @enderror" type="date" id="example-date-input" value="{{ old('tgl_lahir') }}" name="tgl_lahir">
+                        @error('tgl_lahir')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                        @enderror
                       </div>
                     </div>
 
@@ -222,6 +278,15 @@
       </div>
     </div>
   </div>
-  </div>
-  @endsection
-  
+</div>
+@endsection
+
+@push('scripts')
+<script>
+  @if($errors -> any())
+  $(window).on('load', () => {
+    $('#modal-default').modal('show');
+  });
+  @endif
+</script>
+@endpush
