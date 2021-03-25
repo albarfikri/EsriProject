@@ -91,6 +91,14 @@
           </ul>
           <!-- Divider -->
           <hr class="my-3">
+          <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link {!! request()->is('menu/') ? 'active' : '' !!}" href="/menu">
+                <i class="ni ni-ungroup text-blue"></i>
+                <span class="nav-link-text">Menu</span>
+              </a>
+            </li>
+          </ul>
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
             <li class="nav-item">

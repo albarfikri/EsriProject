@@ -10,6 +10,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LaporanBanjirController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\RiwayatDitolakController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 
@@ -27,8 +28,6 @@ use App\Http\Controllers\ViewController;
 // Route::get('/', function () {
 //     return "Hallo";
 // });
-
-
 
 
 Route::prefix('petugas')->group(function () {
@@ -103,6 +102,13 @@ Route::prefix('riwayatditolak')->group(function(){
     Route::get('/',[$controller, 'index']);
     Route::get('/detail/{id}', [$controller, 'detail']);
     Route::post('/verifikasi/{id}', [$controller, 'verifikasi']);
+});
+
+Route::prefix('menu')->group(function(){
+    $controller = MenuController::class;
+    Route::get('/', [$controller, 'index']);
+    Route::post('/addTipeDrainase', [$controller, 'tambahTipeDrainase']);
+    Route::get('/deleteTipeDrainase/{id}', [$controller, 'deleteTipeDrainase']);
 });
 
 Route::get('/', [ViewController::class, "index"]);
