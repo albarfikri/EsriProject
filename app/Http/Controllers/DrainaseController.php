@@ -43,6 +43,8 @@ class DrainaseController extends Controller
             $point['view'] = $point['geometry']['coordinates'][0];
         } else if ($point['geometry']['type'] == 'Point') {
             $point['view'] = $point['geometry']['coordinates'];
+        } else {
+            $point['view'] = $point['geometry']['coordinates'][0];
         }
         // dd(json_encode($point));
         // dd($point['geometry']->{'coordinates'});

@@ -350,6 +350,7 @@
 
 @push('scripts')
   <script>
+
     @if ($errors->any())
         $(window).on('load', () => {
           $('#modal-default').modal('show');
@@ -382,6 +383,8 @@
 
         let polyline = <?= $data ?>;
         let point = polyline.geometry.coordinates;
+
+        // console.log(polyline);
 
         let geostatic = L.geoJson(polyline);
 

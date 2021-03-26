@@ -63,32 +63,22 @@ const makeFilter = (result, obj) => {
 }
 
 const makeObj = () => {
-    let drainase = ["Nama Jalan","Lebar","Panjang","Kedalaman","Bahan","Kondisi","Akhir Pembuangan","Arah Alir","Tipe Drainase","Status"];
-    let banjir = ["Nama Jalan","Kondisi Kerusakan","Keterangan","Status"];
-    let tersumbat = ["Nama Jalan","Keterangan","Status"];
     data.forEach(el => {
         let text = `<table class="table table-bordered">`;
         let foto = "";
         const geo = JSON.parse(el.geometry);
-
-        let name = [...drainase]
-        const flag = Object.keys(el).length;
-        if(flag == 7)       name = [...banjir];
-        else if (flag == 6) name = [...tersumbat];
-
-        let idx = 0;
         Object.keys(el).forEach((key) => {
             if (key == "foto")
                 foto = el[key];
             else if (key == "lebar" || key == "panjang" || key == "kedalaman") {
                 text += `<tr>
-                            <th>${name[idx++]}</th>
-                            <td>${el[key] ? el[key] : "-"} m</td>
+                            <th>${key}</th>
+                            <td>${el[key]} m</td>
                         </tr>`;
             } else if (key != "id" && key != "geometry") {
                 text += `<tr>
-                            <th style="width: 40%">${name[idx++]}</th>
-                            <td>${el[key] ? el[key] : "-"}</td>
+                            <th style="width: 30%">${key}</th>
+                            <td>${el[key]}</td>
                         </tr>`;
             }
         });
@@ -97,7 +87,7 @@ const makeObj = () => {
                 Foto : <br/>
                 <img 
                     src="http://gis-drainase.pocari.id/storage/app/public/images/${foto}"  
-                    onerror="javascript:this.src='images/default.png'"
+                    onerror="javascript:this.src='../assets/img/default.png'"
                     alt="${foto}" style="width: 100%; object-fit: cover;" />
                 <br/>`
 
@@ -193,7 +183,7 @@ closeFilter.addEventListener('click', () => {
 });
 const choose = document.getElementById('chooseObj');
 const url = "http://gis-drainase.pocari.id/api"
-const tipe = ["drainase", "titik_banjir", "titik_tersumbat"]
+const tipe = ["drainase", "titik_banjir", "titik_tersumbat","kembali"]
 
 for (let i = 0; i < choose.children.length; i++) {
     choose.children[i].addEventListener('click', (e) => {
@@ -268,8 +258,8 @@ for (let i = 0; i < choose.children.length; i++) {
                 data = result;
                 backup = data;
                 makeObj();
-            }).catch(err=>console.log(err));
-    })
+            }).catch(err=>console.log(err)) 
+    }) 
 }
 
 filterBtn.addEventListener('click', (e) => {
